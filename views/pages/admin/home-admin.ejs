@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../../views/blocks/admin/head-admin") %> 
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Fashi Admin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+<%- include("../../../views/blocks/admin/nav-header-top-admin") %> 
+<!--top-Header-menu-->
+
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<%- include("../../../views/blocks/admin/search-admin") %> 
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<%- include("../../../views/blocks/admin/sidebar-menu-admin") %> 
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+<!--breadcrumbs-->
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  </div>
+<!--End-breadcrumbs-->
+
+<!--Action boxes-->
+<%- include("./admin-shop-men") %> 
+</div>
+
+<!--end-main-container-part-->
+
+<!--Footer-part-->
+
+<%- include("../../../views/blocks/admin/footer-admin") %> 
+
+<!--end-Footer-part-->
+
+<%- include("../../../views/blocks/admin/script-admin") %> pt> 
+<script src="js/matrix.tables.js"></script> 
+
+<script type="text/javascript">
+  // This function is called from the pop-up menus to transfer to
+  // a different page. Ignore if the value returned is a null string:
+  function goPage (newURL) {
+
+      // if url is empty, skip the menu dividers and reset the menu selection to default
+      if (newURL != "") {
+      
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();            
+          } 
+          // else, send page to designated URL            
+          else {  
+            document.location.href = newURL;
+          }
+      }
+  }
+
+// resets the menu selection upon entry to this page:
+function resetMenu() {
+   document.gomenu.selector.selectedIndex = 2;
+}
+</script>
+</body>
+</html>
