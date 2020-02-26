@@ -14,7 +14,18 @@
     <!-- Header End -->
 
     <!-- Breadcrumb Section Begin -->
-    <%- include("../blocks/breacrumb-section") %> 
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <a href="/"><i class="fa fa-home"></i> Home</a>
+                        <span>Thời trang trẻ em</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Breadcrumb Section Begin -->
 
     <!-- Product Shop Section Begin -->
@@ -23,11 +34,11 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
                     
-                    <%- include("../common/filter-widget-brand") %> 
-                    <%- include("../common/filter-widget-price") %> 
+                    <%- include("../common/shop/filter-widget-brand") %> 
+                    <%- include("../common/shop/filter-widget-price") %> 
                    
-                    <%- include("../common/filter-widget-size") %> 
-                    <%- include("../common/filter-widget-tag") %> 
+                    <%- include("../common/shop/filter-widget-size") %> 
+                    <%- include("../common/shop/filter-widget-tag") %> 
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">

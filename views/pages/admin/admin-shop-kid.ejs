@@ -1,0 +1,102 @@
+<div class="widget-box">
+  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+    <h5>Product Kid</h5>
+    <div>
+      <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
+      <!-- Button trigger modal -->
+      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
+        Add
+      </button> -->
+      <div style="float: right;">
+        <button type="button" id="btnAddShop" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
+          Add
+        </button>
+      </div>
+      <!-- Modal -->
+      <form action="http://localhost:3001/admin/page/admin-shop-kid" method="POST" enctype="multipart/form-data">
+      <div class="modal fade" id="addProductKid" tabindex="-1" role="dialog" 
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
+              
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+              <input type="text" name="txtName" id="name" placeholder="Please enter name"/>
+              <input type="text" name="txtCategory" id="category" placeholder="Please enter category"/>
+              <input type="file" name="fileImage" id="image" />
+              <input type="text" name="txtMaker" id="maker" placeholder="Please enter Brand"/>
+              <input type="text" name="txtPrice" id="price" placeholder="Please enter price"/>
+              <input type="text" name="txtDiscount" id="discout" placeholder="Please enter discount"/>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button id="btnSaveProduct" type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+  <div class="widget-content nopadding">
+    <table class="table table-bordered data-table">
+      <thead>
+        <tr>
+          <th style="width: 10px;">STT</th>
+          <th style="width: 200px;">Name</th>
+          <th style="width: 150px;">Image</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Price</th>
+          <th>Discount</th>
+          <th style="width: 150px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% pros.forEach( (pro, index) => {  %> 
+        <tr class="gradeX">
+         <td><%- index+1 %> </td>
+          <td><%- pro.title %> </td>
+          <td><%- pro.category %> </td>
+          <td class="center"><img src="upload/1582698413791-IMG_1971.JPG" alt="anh"></td>
+          <td class="center"><%- pro.brand %> </td>
+          <td class="center"><%- pro.price %> $
+          </td>
+          <td class="center"> <%- pro.discount %>
+          <td>
+            <button class="btn btn-info" id="editProductKid" data-toggle="modal" data-target="#editProductKid"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      <% }) %> 
+        <!-- <tr class="gradeX">
+          <td>1</td>
+          <td>Internet
+            Explorer 4.0</td>
+          <td>Win 95+</td>
+          <td class="center">4</td>
+          <td>Cavin</td>
+          <td>123$
+          </td>
+          <td>120$</td>
+          <td>
+            <button class="btn btn-info"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr> -->
+        
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
