@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+    <%- include("../blocks/head") %> 
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <%- include("../blocks/header") %> 
+    <!-- Header End -->
+
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text product-more">
+                        <a href="./"><i class="fa fa-home"></i> Trang chủ</a>
+                        <a href="./shop">Cửa hàng</a>
+                        <span>Chi tiết sản phẩm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+    <!-- Product Shop Section Begin -->
+    <section class="product-shop spad page-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    
+                    <%- include("../common/shop/filter-widget-brand") %> 
+                    <%- include("../common/shop/filter-widget-price") %> 
+                    <%- include("../common/shop/filter-widget-size") %> 
+                    <%- include("../common/shop/filter-widget-tag") %> 
+                </div>
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="product-pic-zoom">
+                                <img class="product-big-img" src="img/product-single/product-1.jpg" alt="">
+                                <div class="zoom-icon">
+                                    <i class="fa fa-search-plus"></i>
+                                </div>
+                            </div>
+                            <div class="product-thumbs">
+                                <div class="product-thumbs-track ps-slider owl-carousel">
+                                    <div class="pt active" data-imgbigurl="img/product-single/product-1.jpg"><img
+                                            src="img/product-single/product-1.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-2.jpg"><img
+                                            src="img/product-single/product-2.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
+                                            src="img/product-single/product-3.jpg" alt=""></div>
+                                    <div class="pt" data-imgbigurl="img/product-single/product-3.jpg"><img
+                                            src="img/product-single/product-3.jpg" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="product-details">
+                                <div class="pd-title">
+                                    
+                                    <h3>Pure Pineapple</h3>
+                                    <a href="#" class="heart-icon"><i class="icon_heart_alt"></i></a>
+                                </div>
+                                <div class="pd-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <span>(5)</span>
+                                </div>
+                                <div class="pd-desc">
+                                    <p>Lorem ipsum dolor sit amet, consectetur ing elit, sed do eiusmod tempor sum dolor
+                                        sit amet, consectetur adipisicing elit, sed do mod tempor</p>
+                                    <h4>495.000 VNĐ <span>629.990 VNĐ</span></h4>
+                                </div>
+                              
+                                <div class="pd-size-choose">
+                                    <div class="sc-item">
+                                        <input type="radio" id="sm-size">
+                                        <label for="sm-size">s</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="md-size">
+                                        <label for="md-size">m</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="lg-size">
+                                        <label for="lg-size">l</label>
+                                    </div>
+                                    <div class="sc-item">
+                                        <input type="radio" id="xl-size">
+                                        <label for="xl-size">xs</label>
+                                    </div>
+                                </div>
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1">
+                                    </div>
+                                    <a href="#" class="primary-btn pd-cart">Thêm giỏ hàng</a>
+                                </div>
+                                <ul class="pd-tags">
+                                    <li><span>THỂ LOẠI</span>: More Accessories, Wallets & Cases</li>
+                                    <li><span>TAGS</span>: Quần áp, Áo dài tay, Nữ</li>
+                                </ul>
+                                <div class="pd-share">
+                                    <div class="p-code">Sku : 00012</div>
+                                    <div class="pd-social">
+                                        <a href="#"><i class="ti-facebook"></i></a>
+                                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                                        <a href="#"><i class="ti-linkedin"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-tab">
+                        <div class="tab-item">
+                            <ul class="nav" role="tablist">
+                                <li>
+                                    <a class="active" data-toggle="tab" href="#tab-1" role="tab">Chú giải</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-2" role="tab">Thông tin chi tiết</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab-3" role="tab">Phản hồi (02)</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-item-content">
+                            <div class="tab-content">
+                                <div class="tab-pane fade-in active" id="tab-1" role="tabpanel">
+                                    <div class="product-content">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <h5>Thông tin</h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                                <h5>Features</h5>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+                                                    ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                    aliquip ex ea commodo consequat. Duis aute irure dolor in </p>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <img src="img/product-single/tab-desc.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-2" role="tabpanel">
+                                    <div class="specification-table">
+                                        <table>
+                                            <tr>
+                                                <td class="p-catagory">Đánh giá</td>
+                                                <td>
+                                                    <div class="pd-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                        <span>(5)</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Giá</td>
+                                                <td>
+                                                    <div class="p-price">495.000 VNĐ</div>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="p-catagory">Sản phẩm còn</td>
+                                                <td>
+                                                    <div class="p-stock">22</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Cân nặng</td>
+                                                <td>
+                                                    <div class="p-weight">1,3kg</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p-catagory">Size</td>
+                                                <td>
+                                                    <div class="p-size">Xxl</div>
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td class="p-catagory">Sku</td>
+                                                <td>
+                                                    <div class="p-code">00012</div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-3" role="tabpanel">
+                                    <div class="customer-review-option">
+                                        <h4>2 bình luận</h4>
+                                        <div class="comment-option">
+                                            <div class="co-item">
+                                                <div class="avatar-pic">
+                                                    <img src="img/product-single/avatar-1.png" alt="">
+                                                </div>
+                                                <div class="avatar-text">
+                                                    <div class="at-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <h5>Brandon Kelley <span>27 Aug 2019</span></h5>
+                                                    <div class="at-reply">Nice !</div>
+                                                </div>
+                                            </div>
+                                            <div class="co-item">
+                                                <div class="avatar-pic">
+                                                    <img src="img/product-single/avatar-2.png" alt="">
+                                                </div>
+                                                <div class="avatar-text">
+                                                    <div class="at-rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </div>
+                                                    <h5>Roy Banks <span>27 Aug 2019</span></h5>
+                                                    <div class="at-reply">Nice !</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="personal-rating">
+                                            <h6>Đánh giá của bán</h6>
+                                            <div class="rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </div>
+                                        </div>
+                                        <div class="leave-comment">
+                                            <h4>Phản hồi của bạn</h4>
+                                            <form action="#" class="comment-form">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <input type="text" placeholder="Tên">
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" placeholder="Email">
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <textarea placeholder="Phản hồi..."></textarea>
+                                                        <button type="submit" class="site-btn">Gủi</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Shop Section End -->
+
+    <!-- Related Products Section End -->
+    <div class="related-products spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Sản phẩm tương tụ</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="img/products/women-1.jpg" alt="">
+                            <div class="sale">Sale</div>
+                            <div class="icon">
+                                <i class="icon_heart_alt"></i>
+                            </div>
+                            <ul>
+                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view"><a href="#">+ Xem ngay</a></li>
+                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">Coat</div>
+                            <a href="/product">
+                                <h5>Pure Pineapple</h5>
+                            </a>
+                            <div class="product-price">
+                                $14.00
+                                <span>$35.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="img/products/women-2.jpg" alt="">
+                            <div class="icon">
+                                <i class="icon_heart_alt"></i>
+                            </div>
+                            <ul>
+                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view"><a href="#">+ Xem ngay</a></li>
+                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">Shoes</div>
+                            <a href="/product">
+                                <h5>Guangzhou sweater</h5>
+                            </a>
+                            <div class="product-price">
+                                130.000 VNĐ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="img/products/women-3.jpg" alt="">
+                            <div class="icon">
+                                <i class="icon_heart_alt"></i>
+                            </div>
+                            <ul>
+                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view"><a href="#">+ Xem ngay</a></li>
+                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">Towel</div>
+                            <a href="/product">
+                                <h5>Pure Pineapple</h5>
+                            </a>
+                            <div class="product-price">
+                                340.000 VNĐ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="product-item">
+                        <div class="pi-pic">
+                            <img src="img/products/women-4.jpg" alt="">
+                            <div class="icon">
+                                <i class="icon_heart_alt"></i>
+                            </div>
+                            <ul>
+                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                <li class="quick-view"><a href="#">+ Xem ngay</a></li>
+                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="pi-text">
+                            <div class="catagory-name">Towel</div>
+                            <a href="/product">
+                                <h5>Converse Shoes</h5>
+                            </a>
+                            <div class="product-price">
+                                340.000 VNĐ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Related Products Section End -->
+
+    <!-- Partner Logo Section Begin -->
+    <%- include("../blocks/footer") %> 
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+   <%- include("../blocks/js-page") %>
+</body>
+
+</html>

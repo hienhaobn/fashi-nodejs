@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-const productKidSchema = new mongoose.Schema({
+const productWomenSchema = new mongoose.Schema({
     "title": String,
     "category": String,
     "image": String,
@@ -15,4 +15,4 @@ const productKidSchema = new mongoose.Schema({
     "updated_at": Date
 });
 
-module.exports = mongoose.model("ProductKid", productKidSchema);
+module.exports = mongoose.model("ProductWomen", productWomenSchema);

@@ -1,1 +1,198 @@
-<h1>Shop Men's</h1>
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../../views/blocks/admin/head-admin") %>
+
+<body>
+
+    <!--Header-part-->
+    <div id="header">
+        <h1><a href="dashboard.html">Fashi Admin</a></h1>
+    </div>
+    <!--close-Header-part-->
+
+    <%- include("../../../views/blocks/admin/nav-header-top-admin") %>
+    <!--top-Header-menu-->
+
+    <!--close-top-Header-menu-->
+    <!--start-top-serch-->
+    <%- include("../../../views/blocks/admin/search-admin") %>
+    <!--close-top-serch-->
+    <!--sidebar-menu-->
+    <%- include("../../../views/blocks/admin/sidebar-menu-admin") %>
+    <!--sidebar-menu-->
+
+    <!--main-container-part-->
+    <div id="content">
+        <!--breadcrumbs-->
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+                    Home</a>
+            </div>
+        </div>
+        <!--End-breadcrumbs-->
+
+        <!--Action boxes-->
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                <h5>Quản lý cửa hàng nam</h5>
+                <div>
+                    <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
+                    <!-- Button trigger modal -->
+                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
+        Add
+      </button> -->
+                    <div style="float: right;">
+                        <button type="button" id="btnAddShopMen" class="btn btn-primary" data-toggle="modal"
+                            data-target="#addProductMen">
+                            Thêm
+                        </button>
+                    </div>
+                    <!-- Modal -->
+                    <form action="http://localhost:3001/admin/page/admin-shop-men" method="POST"
+                        enctype="multipart/form-data">
+                        <div class="modal fade" id="addProductMen" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <input type="text" name="txtName" id="name" placeholder="Nhập tên" />
+                                        <input type="text" name="txtCategory" id="category"
+                                            placeholder="Nhập thể loại" />
+                                        <input type="file" name="fileImage" id="image" />
+                                        <input type="text" name="txtMaker" id="maker" placeholder="Nhập thương hiệu" />
+                                        <input type="text" name="txtPrice" id="price" placeholder="Nhập giá bán" />
+                                        <input type="text" name="txtDiscount" id="discout"
+                                            placeholder="Nhập giá giảm" />
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button id="btnSaveProductMen" type="submit"
+                                            class="btn btn-primary">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+
+
+
+
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px;">STT</th>
+                            <th style="width: 200px;">Tên sản phẩm</th>
+                            <th style="width: 150px;">Ảnh</th>
+                            <th>Thể loại</th>
+                            <th>Thương hiệu</th>
+                            <th>Giá bán</th>
+                            <th>Giá giảm</th>
+                            <th style="width: 150px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table">
+                        <% pros.forEach( (pro) => {  %>
+                        <tr class="gradeX">
+                            <td>1</td>
+                            <td><%- pro.title %> </td>
+                            <td class="center"><img src="upload/" +<%- pro.image %> alt="anh"></td>
+                            <td><%- pro.category %> </td>
+
+                            <td class="center"><%- pro.brand %> </td>
+                            <td class="center"><%- pro.price %> $
+                            </td>
+                            <td class="center"> <%- pro.discount %>
+                            <td>
+                                <button class="btn btn-info editProductMen" data-toggle="modal"
+                                    data-target="#addProductMen" data-id=<%- pro._id %>> <i class="icon-edit">&nbsp;
+                                    </i>Edit</<i>&nbsp; </button>
+                                <button class="btn btn-danger deleteProductMen" data-toggle="modal"
+                                    data-target="#ModalDeleteProductMen" data-id=<%- pro._id %>>Delete</button>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalDeleteProductMen" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Xóa sản phẩm</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <h5>Bạn có muốn xóa sản phẩm này</h5>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button id="btnDeleteProductMen" type="submit" class="btn btn-primary">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!--end-main-container-part-->
+
+    <!--Footer-part-->
+
+    <%- include("../../../views/blocks/admin/footer-admin") %>
+
+    <!--end-Footer-part-->
+
+    <%- include("../../../views/blocks/admin/script-admin") %> pt>
+    <script src="js/matrix.tables.js"></script>
+
+    <script type="text/javascript">
+        // This function is called from the pop-up menus to transfer to
+        // a different page. Ignore if the value returned is a null string:
+        function goPage(newURL) {
+
+            // if url is empty, skip the menu dividers and reset the menu selection to default
+            if (newURL != "") {
+
+                // if url is "-", it is this page -- reset the menu:
+                if (newURL == "-") {
+                    resetMenu();
+                }
+                // else, send page to designated URL            
+                else {
+                    document.location.href = newURL;
+                }
+            }
+        }
+
+        // resets the menu selection upon entry to this page:
+        function resetMenu() {
+            document.gomenu.selector.selectedIndex = 2;
+        }
+    </script>
+
+</body>
+
+</html>

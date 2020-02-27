@@ -60,12 +60,12 @@
         </tr>
       </thead>
       <tbody>
-        <% pros.forEach( (pro, index) => {  %> 
+        <% pros.forEach( (pro) => {  %> 
         <tr class="gradeX">
-         <td><%- index+1 %> </td>
+         <td>1</td>
           <td><%- pro.title %> </td>
           <td><%- pro.category %> </td>
-          <td class="center"><img src="upload/1582698413791-IMG_1971.JPG" alt="anh"></td>
+          <td class="center"><img src="upload/"+<%- pro.image %>  alt="anh"></td>
           <td class="center"><%- pro.brand %> </td>
           <td class="center"><%- pro.price %> $
           </td>

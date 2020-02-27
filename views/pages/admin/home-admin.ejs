@@ -1,72 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include("../../../views/blocks/admin/head-admin") %> 
+<%- include("../../../views/blocks/admin/head-admin") %>
+
 <body>
 
-<!--Header-part-->
-<div id="header">
-  <h1><a href="dashboard.html">Fashi Admin</a></h1>
-</div>
-<!--close-Header-part--> 
-
-<%- include("../../../views/blocks/admin/nav-header-top-admin") %> 
-<!--top-Header-menu-->
-
-<!--close-top-Header-menu-->
-<!--start-top-serch-->
-<%- include("../../../views/blocks/admin/search-admin") %> 
-<!--close-top-serch-->
-<!--sidebar-menu-->
-<%- include("../../../views/blocks/admin/sidebar-menu-admin") %> 
-<!--sidebar-menu-->
-
-<!--main-container-part-->
-<div id="content">
-<!--breadcrumbs-->
-  <div id="content-header">
-    <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+  <!--Header-part-->
+  <div id="header">
+    <h1><a href="dashboard.html">Fashi Admin</a></h1>
   </div>
-<!--End-breadcrumbs-->
+  <!--close-Header-part-->
 
-<!--Action boxes-->
-<%- include("./"+page+"") %>
-</div>
+  <%- include("../../../views/blocks/admin/nav-header-top-admin") %>
+  <!--top-Header-menu-->
 
-<!--end-main-container-part-->
+  <!--close-top-Header-menu-->
+  <!--start-top-serch-->
+  <%- include("../../../views/blocks/admin/search-admin") %>
+  <!--close-top-serch-->
+  <!--sidebar-menu-->
+  <%- include("../../../views/blocks/admin/sidebar-menu-admin") %>
+  <!--sidebar-menu-->
 
-<!--Footer-part-->
+  <!--main-container-part-->
+  <div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+      </div>
+    </div>
+    <!--End-breadcrumbs-->
 
-<%- include("../../../views/blocks/admin/footer-admin") %> 
+    <!--Action boxes-->
+    <div class="widget-box">
+      <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+        <h5>Product Kid</h5>
+        <div>
+          <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
+          <!-- Button trigger modal -->
+          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
+        Add
+      </button> -->
+          <div style="float: right;">
+            <button type="button" id="btnAddShop" class="btn btn-primary" data-toggle="modal"
+              data-target="#addProductKid">
+              Add
+            </button>
+          </div>
+          <!-- Modal -->
+          <form action="http://localhost:3001/admin/page/admin-shop-kid" method="POST" enctype="multipart/form-data">
+            <div class="modal fade" id="addProductKid" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
 
-<!--end-Footer-part-->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
 
-<%- include("../../../views/blocks/admin/script-admin") %> pt> 
-<script src="js/matrix.tables.js"></script> 
+                    <input type="text" name="txtName" id="name" placeholder="Please enter name" />
+                    <input type="text" name="txtCategory" id="category" placeholder="Please enter category" />
+                    <input type="file" name="fileImage" id="image" />
+                    <input type="text" name="txtMaker" id="maker" placeholder="Please enter Brand" />
+                    <input type="text" name="txtPrice" id="price" placeholder="Please enter price" />
+                    <input type="text" name="txtDiscount" id="discout" placeholder="Please enter discount" />
 
-<script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="btnSaveProduct" type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      </form>
+      <div class="widget-content nopadding">
+        <table class="table table-bordered data-table">
+          <thead>
+            <tr>
+              <th style="width: 10px;">STT</th>
+              <th style="width: 200px;">Name</th>
+              <th style="width: 150px;">Image</th>
+              <th>Category</th>
+              <th>Brand</th>
+              <th>Price</th>
+              <th>Discount</th>
+              <th style="width: 150px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+           
+            <tr class="gradeX">
+          <td>1</td>
+          <td>Internet
+            Explorer 4.0</td>
+          <td>Win 95+</td>
+          <td class="center">4</td>
+          <td>Cavin</td>
+          <td>123$
+          </td>
+          <td>120$</td>
+          <td>
+            <button class="btn btn-info"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
 
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-      
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+    <!--end-main-container-part-->
+
+    <!--Footer-part-->
+
+    <%- include("../../../views/blocks/admin/footer-admin") %>
+
+    <!--end-Footer-part-->
+
+    <%- include("../../../views/blocks/admin/script-admin") %> pt>
+    <script src="js/matrix.tables.js"></script>
+
+    <script type="text/javascript">
+      // This function is called from the pop-up menus to transfer to
+      // a different page. Ignore if the value returned is a null string:
+      function goPage(newURL) {
+
+        // if url is empty, skip the menu dividers and reset the menu selection to default
+        if (newURL != "") {
+
           // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();            
-          } 
+          if (newURL == "-") {
+            resetMenu();
+          }
           // else, send page to designated URL            
-          else {  
+          else {
             document.location.href = newURL;
           }
+        }
       }
-  }
 
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
-</script>
+      // resets the menu selection upon entry to this page:
+      function resetMenu() {
+        document.gomenu.selector.selectedIndex = 2;
+      }
+    </script>
 
 </body>
+
 </html>

@@ -2,6 +2,10 @@ var express = require("express");
 var app = express();
 const bodyParser = require("body-parser");
 var mongoose = require("mongoose");
+var multer = require("multer");
+const ProductKid = require("./server/models/ProductKid");
+const ProductMen = require("./server/models/ProductMen");
+const ProductWomen = require("./server/models/ProductWomen");
 // var ProductKidController = require("./server/controllers/productKid.controller");
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -32,7 +36,7 @@ mongoose.connect(
 );
 
 // upload image
-var multer = require("multer");
+
 var store = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/upload");
@@ -75,73 +79,130 @@ app.get("/shop-women", (req, res) => {
   });
 app.get("/shop-kids", (req, res) => {
     res.render("pages/shop-kids");
-  });
+});
+app.get("/blog", (req, res) => {
+    res.render("pages/blog-customer");
+});
+app.get("/blog-details", (req, res) => {
+    res.render("pages/blog-details-customer");
+});
+app.get("/checkout", (req, res) => {
+    res.render("pages/checkout");
+});
+app.get("/login", (req, res) => {
+    res.render("pages/login");
+});
+app.get("/register", (req, res) => {
+    res.render("pages/register");
+});
+app.get("/shopping-cart", (req, res) => {
+    res.render("pages/shopping-cart");
+});
+app.get("/product", (req, res) => {
+    res.render("pages/product");
+});
+// route admin
 app.get("/admin", (req, res) => {
-  res.render("pages/admin/home-admin", { page: "admin-shop-men" });
+  res.render("pages/admin/home-admin");
 });
-// app.get("/admin/page/:p", (req, res) => {
-//   res.render("pages/admin/home-admin", { page: req.params.p });
-// });
-//models
-const ProductKid = require("./server/models/ProductKid");
-app.post("/admin/page/admin-shop-kid", function(req, res) {
-  // var pro = new ProductKid({
-  //     title: "T-Shirt",
-  //     image: 'abc',
-  //     brand: 'Kevin',
-  //     price: 123,
-  //     discount: 120,
-  //     ordering: 1,
-  //     active: 1
-  // });
-  // pro.save((err) => {
-  //     if(err) {
-  //         console.log("Save Product Kid Error: "+ err);
-  //     } else {
-  //         console.log("Save Product Kid Successfull!" + pro._id);
-  //         res.json({result: 'ok'});
-  //     }
-  // })
-  upload(req, res, err => {
-    if (err instanceof multer.MulterError) {
-      console.log("A Multer error occurred when uploading");
-      res.json({ result: 0 });
-    } else {
-      console.log("Upload is okay");
-      console.log(req.file); // infomation file uploaded
-      if (req.body.txtUn && req.body.txtPa) {
-        res.json({ file: req.file.filename });
-      } else {
-        var pro = new ProductKid({
-          title: req.body.txtName,
-          category: req.body.txtCategory,
-          image: req.file.filename,
-          brand: req.body.txtMaker,
-          price: req.body.txtPrice,
-          discount: req.body.txtDiscount,
-          ordering: 1,
-          active: 1
-        });
-        pro.save(err => {
-          if (err) {
-            console.log("Save Product Kid Error: " + err);
-          } else {
-            console.log("Save Product Kid Successfull!" + pro._id);
-            
-          }
-        });
-      }
-    }
-  });
-});
-app.get("/admin/page/admin-shop-kid", (req, res) => {
-    ProductKid.find( (err, items) => {
+app.get("/admin/page/admin-shop-men", (req, res) => {
+    ProductMen.find( (err, items) => {
         if(err) {
             console.log(err);
-            res.render("pages/admin/home-admin",{page: "admin-shop-kid", pros:[]});
+            res.render("pages/admin/admin-shop-men",{pros:[]});
         } else {
-            console.log(items);
-            res.render("pages/admin/home-admin",{page: "admin-shop-kid", pros: items});
+            // console.log(items);
+            res.render("pages/admin/admin-shop-men",{pros: items});
         }
     });
 });
+app.get("/admin/page/admin-shop-women", (req, res) => {
+    res.render("pages/admin/admin-shop-women");
+});
+app.get("/admin/page/admin-shop-kid", (req, res) => {
+    res.render("pages/admin/admin-shop-kid");
+});
+app.get("/admin/page/admin-user", (req, res) => {
+    res.render("pages/admin/admin-user");
+});
+
+//models
+
+app.post("/admin/page/admin-shop-men", function(req, res) {
+    upload(req, res, err => {
+      if (err instanceof multer.MulterError) {
+        console.log("A Multer error occurred when uploading");
+        res.json({ result: 0 });
+      } else {
+        console.log("Upload is okay");
+        console.log(req.file); // infomation file uploaded
+        if (req.body.txtUn && req.body.txtPa) {
+          res.json({ file: req.file.filename });
+        } else {
+          var pro = new ProductMen({
+            "title": req.body.txtName,
+            "category": req.body.txtCategory,
+            "image": req.file.filename,
+            "brand": req.body.txtMaker,
+            "price": req.body.txtPrice,
+            "discount": req.body.txtDiscount,
+            "ordering": 1,
+            "created_at": Date.now()
+          });
+          pro.save(err => {
+            if (err) {
+                console.log("Save Product Men Error: " + err);
+            } else {
+                console.log("Save Product Men Successfull! " + pro._id);
+                res.render("pages/admin/admin-shop-men.ejs");
+            }
+          });
+        }
+      }
+    });
+  });
+
+// app.post("/admin/page/admin-shop-kid", function(req, res) {
+//   upload(req, res, err => {
+//     if (err instanceof multer.MulterError) {
+//       console.log("A Multer error occurred when uploading");
+//       res.json({ result: 0 });
+//     } else {
+//       console.log("Upload is okay");
+//       console.log(req.file); // infomation file uploaded
+//       if (req.body.txtUn && req.body.txtPa) {
+//         res.json({ file: req.file.filename });
+//       } else {
+//         var pro = new ProductKid({
+//           title: req.body.txtName,
+//           category: req.body.txtCategory,
+//           image: req.file.filename,
+//           brand: req.body.txtMaker,
+//           price: req.body.txtPrice,
+//           discount: req.body.txtDiscount,
+//           ordering: 1,
+//           active: 1
+//         });
+//         pro.save(err => {
+//           if (err) {
+//             console.log("Save Product Kid Error: " + err);
+//           } else {
+//             console.log("Save Product Kid Successfull!" + pro._id);
+            
+//           }
+//         });
+//       }
+//     }
+//   });
+// });
+// app.get("/admin/page/admin-shop-kid", (req, res) => {
+//     ProductKid.find( (err, items) => {
+//         if(err) {
+//             console.log(err);
+//             res.render("pages/admin/admin-shop-kid",{pros:[]});
+//         } else {
+//             console.log(items);
+//             res.render("pages//admin-shop-kid",{pros: items});
+//         }
+//     });
+// });
