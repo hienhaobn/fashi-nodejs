@@ -6,6 +6,7 @@ var multer = require("multer");
 const ProductKid = require("./server/models/ProductKid");
 const ProductMen = require("./server/models/ProductMen");
 const ProductWomen = require("./server/models/ProductWomen");
+const ProductMenRouter = require('./server/routers/product-men-router');
 // var ProductKidController = require("./server/controllers/productKid.controller");
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -105,17 +106,17 @@ app.get("/product", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("pages/admin/home-admin");
 });
-app.get("/admin/page/admin-shop-men", (req, res) => {
-    ProductMen.find( (err, items) => {
-        if(err) {
-            console.log(err);
-            res.render("pages/admin/admin-shop-men",{pros:[]});
-        } else {
-            // console.log(items);
-            res.render("pages/admin/admin-shop-men",{pros: items});
-        }
-    });
-});
+// app.get("/admin/page/admin-shop-men", (req, res) => {
+//     ProductMen.find( (err, items) => {
+//         if(err) {
+//             console.log(err);
+//             res.render("pages/admin/admin-shop-men",{pros:[]});
+//         } else {
+//             // console.log(items);
+//             res.render("pages/admin/admin-shop-men",{pros: items});
+//         }
+//     });
+// });
 app.get("/admin/page/admin-shop-women", (req, res) => {
     res.render("pages/admin/admin-shop-women");
 });
@@ -128,81 +129,54 @@ app.get("/admin/page/admin-user", (req, res) => {
 
 //models
 
-app.post("/admin/page/admin-shop-men", function(req, res) {
-    upload(req, res, err => {
-      if (err instanceof multer.MulterError) {
-        console.log("A Multer error occurred when uploading");
-        res.json({ result: 0 });
-      } else {
-        console.log("Upload is okay");
-        console.log(req.file); // infomation file uploaded
-        if (req.body.txtUn && req.body.txtPa) {
-          res.json({ file: req.file.filename });
-        } else {
-          var pro = new ProductMen({
-            "title": req.body.txtName,
-            "category": req.body.txtCategory,
-            "image": req.file.filename,
-            "brand": req.body.txtMaker,
-            "price": req.body.txtPrice,
-            "discount": req.body.txtDiscount,
-            "ordering": 1,
-            "created_at": Date.now()
-          });
-          pro.save(err => {
-            if (err) {
-                console.log("Save Product Men Error: " + err);
-            } else {
-                console.log("Save Product Men Successfull! " + pro._id);
-                res.render("pages/admin/admin-shop-men.ejs");
-            }
-          });
-        }
-      }
-    });
-  });
-
-// app.post("/admin/page/admin-shop-kid", function(req, res) {
-//   upload(req, res, err => {
-//     if (err instanceof multer.MulterError) {
-//       console.log("A Multer error occurred when uploading");
-//       res.json({ result: 0 });
-//     } else {
-//       console.log("Upload is okay");
-//       console.log(req.file); // infomation file uploaded
-//       if (req.body.txtUn && req.body.txtPa) {
-//         res.json({ file: req.file.filename });
+// app.post("/admin/page/admin-shop-men", function(req, res) {
+//     upload(req, res, err => {
+//       if (err instanceof multer.MulterError) {
+//         console.log("A Multer error occurred when uploading");
+//         res.json({ result: 0 });
 //       } else {
-//         var pro = new ProductKid({
-//           title: req.body.txtName,
-//           category: req.body.txtCategory,
-//           image: req.file.filename,
-//           brand: req.body.txtMaker,
-//           price: req.body.txtPrice,
-//           discount: req.body.txtDiscount,
-//           ordering: 1,
-//           active: 1
-//         });
-//         pro.save(err => {
-//           if (err) {
-//             console.log("Save Product Kid Error: " + err);
-//           } else {
-//             console.log("Save Product Kid Successfull!" + pro._id);
-            
-//           }
-//         });
-//       }
-//     }
-//   });
-// });
-// app.get("/admin/page/admin-shop-kid", (req, res) => {
-//     ProductKid.find( (err, items) => {
-//         if(err) {
-//             console.log(err);
-//             res.render("pages/admin/admin-shop-kid",{pros:[]});
+//         console.log("Upload is okay");
+//         console.log(req.file); // infomation file uploaded
+//         if (req.body.txtUn && req.body.txtPa) {
+//           res.json({ file: req.file.filename });
 //         } else {
-//             console.log(items);
-//             res.render("pages//admin-shop-kid",{pros: items});
+//           var pro = new ProductMen({
+//             "title": req.body.txtName,
+//             "category": req.body.txtCategory,
+//             "image": req.file.filename,
+//             "brand": req.body.txtMaker,
+//             "price": req.body.txtPrice,
+//             "discount": req.body.txtDiscount,
+//             "ordering": 1,
+//             "created_at": Date.now()
+//           });
+//           pro.save(err => {
+//             if (err) {
+//                 console.log("Save Product Men Error: " + err);
+//             } else {
+//                 console.log("Save Product Men Successfull!" + pro._id);
+//                 ProductMen.find( (err, items) => {
+//                     if(err) {
+//                         console.log(err);
+//                         // res.json({
+//                         //     error: err,
+//                         //     message: "Thêm sản phẩm thất bại"
+//                         // })
+//                         res.render("pages/admin/admin-shop-men",{pros:[]});
+//                     } else {
+//                         // console.log(items);
+//                         // res.json({
+//                         //     pros: items,
+//                         //     message: "Thêm sản phẩm thành công"
+//                         // });
+//                         res.render("pages/admin/admin-shop-men",{pros: items});
+//                     }
+//                 });
+//             }
+//           });
 //         }
+//       }
 //     });
-// });
+//   });
+app.use('/admin/page/shop-men', ProductMenRouter);
+

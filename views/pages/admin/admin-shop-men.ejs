@@ -36,6 +36,7 @@
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
                 <h5>Quản lý cửa hàng nam</h5>
                 <div>
+
                     <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
                     <!-- Button trigger modal -->
                     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
@@ -48,7 +49,7 @@
                         </button>
                     </div>
                     <!-- Modal -->
-                    <form action="http://localhost:3001/admin/page/admin-shop-men" method="POST"
+                    <form action="http://localhost:3001/admin/page/shop-men/create-product-men" method="POST"
                         enctype="multipart/form-data">
                         <div class="modal fade" id="addProductMen" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -100,15 +101,15 @@
                             <th>Thương hiệu</th>
                             <th>Giá bán</th>
                             <th>Giá giảm</th>
-                            <th style="width: 150px;"></th>
+                            <th style="width: 150px;"><button id="btnA" class="btn btn-success">Get Data</button></th>
                         </tr>
                     </thead>
                     <tbody id="data-table">
-                        <% pros.forEach( (pro) => {  %>
-                        <tr class="gradeX">
-                            <td>1</td>
+                        <% pros.forEach( (pro, index) => {  %>
+                        <tr class="gradeX" item-id-<%- pro._id %>>
+                            <td><%- index+1 %> </td>
                             <td><%- pro.title %> </td>
-                            <td class="center"><img src="upload/" +<%- pro.image %> alt="anh"></td>
+                            <td class="center"><img src="http://localhost:3001/upload/<%- pro.image %>" alt="anh"></td>
                             <td><%- pro.category %> </td>
 
                             <td class="center"><%- pro.brand %> </td>
@@ -116,9 +117,10 @@
                             </td>
                             <td class="center"> <%- pro.discount %>
                             <td>
-                                <button class="btn btn-info editProductMen" data-toggle="modal"
-                                    data-target="#addProductMen" data-id=<%- pro._id %>> <i class="icon-edit">&nbsp;
-                                    </i>Edit</<i>&nbsp; </button>
+                                <a class="btn btn-secondary editProductMen" href="/admin/page/shop-men/edit-product-men/<%- pro._id %>"
+                                   data-id=<%- pro._id %> style="width: 50px; height: 30;"> <i
+                                        class="icon-edit" >&nbsp;
+                                    </i>Edit</<i>&nbsp; </a>
                                 <button class="btn btn-danger deleteProductMen" data-toggle="modal"
                                     data-target="#ModalDeleteProductMen" data-id=<%- pro._id %>>Delete</button>
                             </td>
@@ -131,7 +133,7 @@
             </div>
         </div>
     </div>
-
+    <!-- <form action="http://localhost:3001/admin/page/shop-men/delete-prduct-men&"> -->
     <div class="modal fade" id="ModalDeleteProductMen" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -150,18 +152,45 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button id="btnDeleteProductMen" type="submit" class="btn btn-primary">Đồng ý</button>
+                    <button type="submit" class="btn btn-primary btnDeleteProductMen">Đồng ý</button>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-    </div>
+    <!-- </form> -->
+    <!-- <form action="http://localhost:3001/admin/page/shop-men/edit-product-men<%- pros._id %> " method="POST"
+        enctype="multipart/form-data">
+        <div class="modal fade" id="ModalEditProductMen" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Edit item</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="margin-left: 150px;">
+
+                        <input type="text" name="Name" id="name" placeholder="Enter name" /> <br/>
+                        <input type="text" name="Category" id="category" placeholder="Enter category" /><br/>
+                        <img src="http://localhost:3001/upload/1582790570178-IMG_1971.JPG" alt="image"" style="width: 150px; height: 150px;"/><br/>
+                        <input type="file" name="fileImage" id="image" /><br/>
+                        <input type="text" name="Maker" id="maker" placeholder="Enter brand" /><br/>
+                        <input type="text" name="Price" id="price" placeholder="Enter price" /><br/>
+                        <input type="text" name="Discount" id="discout" placeholder="Enter discount" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="btnSaveProductMen" type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form> -->
     <!--end-main-container-part-->
 
     <!--Footer-part-->
 
-    <%- include("../../../views/blocks/admin/footer-admin") %>
 
     <!--end-Footer-part-->
 
