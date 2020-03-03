@@ -9,9 +9,9 @@ var ProductMenController = require('../controllers/productMen.controller');
 
 router.get('/', ProductMenController.getProductMen);
 
-router.get('/edit-product-men/:id', urlendcodeParser, ProductMenController.getEditProductMen);
-
-router.post('/delete-prduct-men&:id', ProductMenController.deleteProductMen);
+router.get('/:id', urlendcodeParser, ProductMenController.getProduct);
+router.post('/edit-product-men/:id', urlendcodeParser, ProductMenController.editProductMen);
+router.post('/delete-product-men/:id', urlendcodeParser, ProductMenController.deleteProductMen);
 
 router.post('/create-product-men',urlendcodeParser, ProductMenController.createProductMen);
 

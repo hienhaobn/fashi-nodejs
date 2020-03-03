@@ -1,14 +1,13 @@
 var mongoose = require('mongoose');
-const productKidSchema = new mongoose.Schema({
-    title: String,
-    category: String,
-    image: String,
-    // file: String,
-    brand: String,
-    price: Number,
-    discount: Number,
-    ordering: Number,
-    active: Number
+const User = new mongoose.Schema({
+    "username": String,
+    "password": String,
+    "role": Number,
+    "created_at": {
+        "type" : Date,
+        "default": Date.now()
+    },
+    "updated_at": Date
 });
 
-module.exports = mongoose.model("ProductKid", productKidSchema);
+module.exports = mongoose.model("User", User);

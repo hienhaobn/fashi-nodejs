@@ -1,102 +1,206 @@
-<div class="widget-box">
-  <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-    <h5>Product Kid</h5>
-    <div>
-      <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
-        Add
-      </button> -->
-      <div style="float: right;">
-        <button type="button" id="btnAddShop" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
-          Add
-        </button>
-      </div>
-      <!-- Modal -->
-      <form action="http://localhost:3001/admin/page/admin-shop-kid" method="POST" enctype="multipart/form-data">
-      <div class="modal fade" id="addProductKid" tabindex="-1" role="dialog" 
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
-              
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              
-              <input type="text" name="txtName" id="name" placeholder="Please enter name"/>
-              <input type="text" name="txtCategory" id="category" placeholder="Please enter category"/>
-              <input type="file" name="fileImage" id="image" />
-              <input type="text" name="txtMaker" id="maker" placeholder="Please enter Brand"/>
-              <input type="text" name="txtPrice" id="price" placeholder="Please enter price"/>
-              <input type="text" name="txtDiscount" id="discout" placeholder="Please enter discount"/>
-              
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button id="btnSaveProduct" type="submit" class="btn btn-primary">Save</button>
-            </div>
-          </div>
-        </div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../../views/blocks/admin/head-admin") %>
+
+<body>
+
+    <!--Header-part-->
+    <div id="header">
+        <h1><a href="dashboard.html">Fashi Admin</a></h1>
     </div>
-  </div>
-</form>
-  <div class="widget-content nopadding">
-    <table class="table table-bordered data-table">
-      <thead>
-        <tr>
-          <th style="width: 10px;">STT</th>
-          <th style="width: 200px;">Name</th>
-          <th style="width: 150px;">Image</th>
-          <th>Category</th>
-          <th>Brand</th>
-          <th>Price</th>
-          <th>Discount</th>
-          <th style="width: 150px;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% pros.forEach( (pro) => {  %> 
-        <tr class="gradeX">
-         <td>1</td>
-          <td><%- pro.title %> </td>
-          <td><%- pro.category %> </td>
-          <td class="center"><img src="upload/"+<%- pro.image %>  alt="anh"></td>
-          <td class="center"><%- pro.brand %> </td>
-          <td class="center"><%- pro.price %> $
-          </td>
-          <td class="center"> <%- pro.discount %>
-          <td>
-            <button class="btn btn-info" id="editProductKid" data-toggle="modal" data-target="#editProductKid"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-      <% }) %> 
-        <!-- <tr class="gradeX">
-          <td>1</td>
-          <td>Internet
-            Explorer 4.0</td>
-          <td>Win 95+</td>
-          <td class="center">4</td>
-          <td>Cavin</td>
-          <td>123$
-          </td>
-          <td>120$</td>
-          <td>
-            <button class="btn btn-info"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr> -->
-        
-      </tbody>
-    </table>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <!--close-Header-part-->
+
+    <%- include("../../../views/blocks/admin/nav-header-top-admin") %>
+    <!--top-Header-menu-->
+
+    <!--close-top-Header-menu-->
+    <!--start-top-serch-->
+    <%- include("../../../views/blocks/admin/search-admin") %>
+    <!--close-top-serch-->
+    <!--sidebar-menu-->
+    <%- include("../../../views/blocks/admin/sidebar-menu-admin") %>
+    <!--sidebar-menu-->
+
+    <!--main-container-part-->
+    <div id="content">
+        <!--breadcrumbs-->
+        <div id="content-header">
+            <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+                    Home</a>
+            </div>
+        </div>
+        <!--End-breadcrumbs-->
+
+        <!--Action boxes-->
+        <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                <h5>Quản lý cửa hàng trẻ em</h5>
+                <div>
+
+
+                    <div style="float: right;">
+                        <button type="button" id="btnAddShopKid" class="btn btn-success" data-toggle="modal"
+                            data-target="#addProductKid">
+                            Thêm
+                        </button>
+                    </div>
+                    <!-- Modal -->
+                    <form action="http://localhost:3001/admin/page/shop-kid/create-product-kid" method="POST"
+                        enctype="multipart/form-data" id="modal-create">
+                        <div class="modal fade" id="addProductKid" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <input type="text" name="txtName" id="name" placeholder="Nhập tên" />
+                                        <input type="text" name="txtCategory" id="category"
+                                            placeholder="Nhập thể loại" />
+                                        <input type="file" name="fileImage" id="image" />
+                                        <input type="text" name="txtMaker" id="maker" placeholder="Nhập thương hiệu" />
+                                        <input type="text" name="txtPrice" id="price" placeholder="Nhập giá bán" />
+                                        <input type="text" name="txtDiscount" id="discout"
+                                            placeholder="Nhập giá giảm" />
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button id="btnSaveProductKid" type="submit"
+                                            class="btn btn-primary">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+
+            <div class="widget-content nopadding">
+                <table class="table table-bordered data-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px;">STT</th>
+                            <th style="width: 200px;">Tên sản phẩm</th>
+                            <th style="width: 150px;">Ảnh</th>
+                            <th>Thể loại</th>
+                            <th>Thương hiệu</th>
+                            <th>Giá bán</th>
+                            <th>Giá giảm</th>
+                            <th style="width: 150px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table">
+                        <% pros.forEach( (pro, index) => {  %>
+                        <tr class="gradeX" item-id-<%- pro._id %>>
+                            <td><%- index+1 %> </td>
+                            <td><%- pro.title %></td>
+                            <td class="center"><img src="http://localhost:3001/upload/<%- pro.image %>" alt="anh"></td>
+                            <td><%- pro.category %> </td>
+
+                            <td class="center"><%- pro.brand %> </td>
+                            <td class="center"><%- pro.price %> $
+                            </td>
+                            <td class="center"> <%- pro.discount %>
+                            <td>
+                                <button class="btn btn-info editProductKid" 
+                                   data-id=<%- pro._id %> data-target="#ModelEditProductKid" data-toggle="modal"
+                                  > <i
+                                        class="icon-edit" >&nbsp;
+                                    </i>Sửa</<i>&nbsp; </button>
+                                <button class="btn btn-danger deleteProductKid" data-toggle="modal"
+                                    data-target="#ModalDeleteProductKid" data-id=<%- pro._id %>>Xóa</button>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <form action="" method="POST"
+    enctype="multipart/form-data" id="modal-delete">
+    <div class="modal fade" id="ModalDeleteProductKid" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" id="modal-delete">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Xóa sản phẩm</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <h5>Bạn có muốn xóa sản phẩm này</h5>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-primary btnDeleteProductKid">Đồng ý</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- modal edit -->
+    <form action="" method="POST"
+                        enctype="multipart/form-data" id="modal-edit">
+                        <div class="modal fade" id="ModelEditProductKid" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Sửa sản phẩm</h5>
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="text-align: center;">
+                                        <label><b>Tên sản phẩm</b>  </label>
+                                        <input type="text" name="Name" id="edit-name" placeholder="Nhập tên" /> <br/>
+                                        <label><b>Tên thể loai</b>  </label>
+                                        <input type="text" name="Category" id="edit-category"
+                                            placeholder="Nhập thể loại" /><br/>
+                                            <label><b>Ảnh cũ</b></label>
+                                            <img src="" alt="anh" id="oldImage" style="height: 150px; width: 150px;"/><br/>
+                                        <label><b>Ảnh mới</b></label>
+                                        <input type="file" name="newImage"/><br/>
+                                            <label><b>Tên thương hiệu</b></label>
+                                            <input type="text" name="Maker" id="edit-maker" placeholder="Nhập thương hiệu" /><br/>
+                                            <label><b>Giá bán</b></label>
+                                            <input type="text" name="Price" id="edit-price" placeholder="Nhập giá bán" /><br/>
+                                            <label><b>Giá giảm</b></label>
+                                            <input type="text" name="Discount" id="edit-discout"
+                                            placeholder="Nhập giá giảm" />
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button id="btnSaveEdit" type="submit"
+                                            class="btn btn-primary">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </form>
+
+    <%- include("../../../views/blocks/admin/script-admin") %> pt>
+   
+</body>
+
+</html>

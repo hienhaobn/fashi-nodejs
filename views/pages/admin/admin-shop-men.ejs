@@ -34,58 +34,54 @@
         <!--Action boxes-->
         <div class="widget-box">
             <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                <h5>Quản lý cửa hàng nam</h5>
+                <h5>Quản lý sản phẩm nam</h5>
                 <div>
 
-                    <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
-                    <!-- Button trigger modal -->
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
-        Add
-      </button> -->
+
                     <div style="float: right;">
-                        <button type="button" id="btnAddShopMen" class="btn btn-primary" data-toggle="modal"
+                        <button type="button" id="btnAddProductMen" class="btn btn-success" data-toggle="modal"
                             data-target="#addProductMen">
                             Thêm
                         </button>
                     </div>
                     <!-- Modal -->
                     <form action="http://localhost:3001/admin/page/shop-men/create-product-men" method="POST"
-                        enctype="multipart/form-data">
-                        <div class="modal fade" id="addProductMen" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
+                    enctype="multipart/form-data" id="modal-create">
+                    <div class="modal fade" id="addProductMen" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
 
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
 
-                                        <input type="text" name="txtName" id="name" placeholder="Nhập tên" />
-                                        <input type="text" name="txtCategory" id="category"
-                                            placeholder="Nhập thể loại" />
-                                        <input type="file" name="fileImage" id="image" />
-                                        <input type="text" name="txtMaker" id="maker" placeholder="Nhập thương hiệu" />
-                                        <input type="text" name="txtPrice" id="price" placeholder="Nhập giá bán" />
-                                        <input type="text" name="txtDiscount" id="discout"
-                                            placeholder="Nhập giá giảm" />
+                                    <input type="text" name="txtName" id="name" placeholder="Nhập tên" />
+                                    <input type="text" name="txtCategory" id="category"
+                                        placeholder="Nhập thể loại" />
+                                    <input type="file" name="fileImage" id="image" />
+                                    <input type="text" name="txtMaker" id="maker" placeholder="Nhập thương hiệu" />
+                                    <input type="text" name="txtPrice" id="price" placeholder="Nhập giá bán" />
+                                    <input type="text" name="txtDiscount" id="discout"
+                                        placeholder="Nhập giá giảm" />
 
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Đóng</button>
-                                        <button id="btnSaveProductMen" type="submit"
-                                            class="btn btn-primary">Lưu</button>
-                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Đóng</button>
+                                    <button id="btnSaveProductKid" type="submit"
+                                        class="btn btn-primary">Lưu</button>
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
             </div>
-            </form>
+        </div>
+        </form>
 
 
 
@@ -101,31 +97,32 @@
                             <th>Thương hiệu</th>
                             <th>Giá bán</th>
                             <th>Giá giảm</th>
-                            <th style="width: 150px;"><button id="btnA" class="btn btn-success">Get Data</button></th>
+                            <th style="width: 150px;"></th>
                         </tr>
                     </thead>
                     <tbody id="data-table">
                         <% pros.forEach( (pro, index) => {  %>
-                        <tr class="gradeX" item-id-<%- pro._id %>>
-                            <td><%- index+1 %> </td>
-                            <td><%- pro.title %> </td>
-                            <td class="center"><img src="http://localhost:3001/upload/<%- pro.image %>" alt="anh"></td>
-                            <td><%- pro.category %> </td>
-
-                            <td class="center"><%- pro.brand %> </td>
-                            <td class="center"><%- pro.price %> $
-                            </td>
-                            <td class="center"> <%- pro.discount %>
-                            <td>
-                                <a class="btn btn-secondary editProductMen" href="/admin/page/shop-men/edit-product-men/<%- pro._id %>"
-                                   data-id=<%- pro._id %> style="width: 50px; height: 30;"> <i
-                                        class="icon-edit" >&nbsp;
-                                    </i>Edit</<i>&nbsp; </a>
-                                <button class="btn btn-danger deleteProductMen" data-toggle="modal"
-                                    data-target="#ModalDeleteProductMen" data-id=<%- pro._id %>>Delete</button>
-                            </td>
-                        </tr>
-                        <% }) %>
+                            <tr class="gradeX" item-id-<%- pro._id %>>
+                                <td><%- index+1 %> </td>
+                                <td><%- pro.title %></td>
+                                <td class="center"><img src="http://localhost:3001/upload/<%- pro.image %>" alt="anh"></td>
+                                <td><%- pro.category %> </td>
+    
+                                <td class="center"><%- pro.brand %> </td>
+                                <td class="center"><%- pro.price %> $
+                                </td>
+                                <td class="center"> <%- pro.discount %>
+                                <td>
+                                    <button class="btn btn-info editProductWomen" 
+                                       data-id=<%- pro._id %> data-target="#ModelEditProductWomen" data-toggle="modal"
+                                      > <i
+                                            class="icon-edit" >&nbsp;
+                                        </i>Edit</<i>&nbsp; </button>
+                                    <button class="btn btn-danger deleteProductWomen" data-toggle="modal"
+                                        data-target="#ModalDeleteProductWomen" data-id=<%- pro._id %>>Delete</button>
+                                </td>
+                            </tr>
+                            <% }) %>
 
 
                     </tbody>
@@ -133,9 +130,10 @@
             </div>
         </div>
     </div>
-    <!-- <form action="http://localhost:3001/admin/page/shop-men/delete-prduct-men&"> -->
+    <form action="" method="POST"
+    enctype="multipart/form-data" id="modal-delete">
     <div class="modal fade" id="ModalDeleteProductMen" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" id="modal-delete">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -157,71 +155,55 @@
             </div>
         </div>
     </div>
-    <!-- </form> -->
-    <!-- <form action="http://localhost:3001/admin/page/shop-men/edit-product-men<%- pros._id %> " method="POST"
-        enctype="multipart/form-data">
-        <div class="modal fade" id="ModalEditProductMen" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Edit item</h5>
+    </form>
+    <!-- modal edit -->
+    <form action="" method="POST"
+                        enctype="multipart/form-data" id="modal-edit">
+                        <div class="modal fade" id="ModelEditProductMen" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Sửa sản phẩm</h5>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body" style="margin-left: 150px;">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" style="text-align: center;">
+                                        <label><b>Tên sản phẩm</b>  </label>
+                                        <input type="text" name="Name" id="edit-name" placeholder="Nhập tên" /> <br/>
+                                        <label><b>Tên thể loai</b>  </label>
+                                        <input type="text" name="Category" id="edit-category"
+                                            placeholder="Nhập thể loại" /><br/>
+                                            <label><b>Ảnh cũ</b></label>
+                                            <img src="" alt="anh" id="oldImage" style="height: 150px; width: 150px;"/><br/>
+                                        <label><b>Ảnh mới</b></label>
+                                        <input type="file" name="newImage"/><br/>
+                                            <label><b>Tên thương hiệu</b></label>
+                                            <input type="text" name="Maker" id="edit-maker" placeholder="Nhập thương hiệu" /><br/>
+                                            <label><b>Giá bán</b></label>
+                                            <input type="text" name="Price" id="edit-price" placeholder="Nhập giá bán" /><br/>
+                                            <label><b>Giá giảm</b></label>
+                                            <input type="text" name="Discount" id="edit-discout"
+                                            placeholder="Nhập giá giảm" />
 
-                        <input type="text" name="Name" id="name" placeholder="Enter name" /> <br/>
-                        <input type="text" name="Category" id="category" placeholder="Enter category" /><br/>
-                        <img src="http://localhost:3001/upload/1582790570178-IMG_1971.JPG" alt="image"" style="width: 150px; height: 150px;"/><br/>
-                        <input type="file" name="fileImage" id="image" /><br/>
-                        <input type="text" name="Maker" id="maker" placeholder="Enter brand" /><br/>
-                        <input type="text" name="Price" id="price" placeholder="Enter price" /><br/>
-                        <input type="text" name="Discount" id="discout" placeholder="Enter discount" />
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="btnSaveProductMen" type="submit" class="btn btn-primary">Save</button>
-                    </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Đóng</button>
+                                        <button id="btnSaveEdit" type="submit"
+                                            class="btn btn-primary">Lưu</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
-        </div>
-    </form> -->
-    <!--end-main-container-part-->
-
-    <!--Footer-part-->
-
-
-    <!--end-Footer-part-->
+            </form>
 
     <%- include("../../../views/blocks/admin/script-admin") %> pt>
-    <script src="js/matrix.tables.js"></script>
-
-    <script type="text/javascript">
-        // This function is called from the pop-up menus to transfer to
-        // a different page. Ignore if the value returned is a null string:
-        function goPage(newURL) {
-
-            // if url is empty, skip the menu dividers and reset the menu selection to default
-            if (newURL != "") {
-
-                // if url is "-", it is this page -- reset the menu:
-                if (newURL == "-") {
-                    resetMenu();
-                }
-                // else, send page to designated URL            
-                else {
-                    document.location.href = newURL;
-                }
-            }
-        }
-
-        // resets the menu selection upon entry to this page:
-        function resetMenu() {
-            document.gomenu.selector.selectedIndex = 2;
-        }
-    </script>
-
+   
 </body>
 
 </html>
