@@ -29,24 +29,25 @@
     <!-- Breadcrumb Form Section Begin -->
 
     <!-- Register Section Begin -->
+    <!-- <form> -->
     <div class="register-login-section spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="register-form">
                         <h2>Đăng ký</h2>
-                        <form action="#">
+                        <form action="http://localhost:3001/register"  onsubmit="return validateForm()" method="POST" name="registerForm">
                             <div class="group-input">
                                 <label for="con-pass">Nhập tài khoản <span style="color: red;">*</span></label>
-                                <input type="text" id="username">
+                                <input type="text" id="username" name="name" required>
                             </div>
                             <div class="group-input">
                                 <label for="con-pass">Nhập mật khẩu <span style="color: red;">*</span></<label>
-                                <input type="text" id="pass">
+                                <input type="password" id="pass" name="pass" required>
                             </div>
                             <div class="group-input">
                                 <label for="con-pass">Nhập lại mật khẩu <span style="color: red;">*</span></label>
-                                <input type="text" id="con-pass">
+                                <input type="password" id="con-pass" name="con-pass" required>
                             </div>
                             <button type="submit" class="site-btn register-btn">Đăng Ký</button>
                         </form>
@@ -58,6 +59,8 @@
             </div>
         </div>
     </div>
+    <!-- </form> -->
+
     <!-- Register Form Section End -->
     
     <!-- Partner Logo Section Begin -->
@@ -66,6 +69,16 @@
 
     <!-- Js Plugins -->
    <%- include("../blocks/js-page") %>
+   <script>
+       function validateForm() {
+           var password = document.forms["registerForm"]["pass"].value;
+           var conPassword = document.forms["registerForm"]["con-pass"].value;
+           if(password !== conPassword) {
+                alert("Mật khẩu không trùng nhau! Vui lòng nhập lại!");
+                return false;
+           }
+       }
+   </script>
 </body>
 
 </html>

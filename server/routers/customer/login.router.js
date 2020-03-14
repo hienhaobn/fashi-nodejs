@@ -4,9 +4,11 @@ const router=express.Router();
 const bodyparser=require('body-parser');
 const urlendcodeParser=bodyparser.urlencoded({extended:false});
 
-var User = require('../../models/User');
+var User = require('../../controllers/customer/login.controller');
 
 
 router.get('/', User.getLogin);
 
-router.get('/:id', User.RedirectLogin);
+router.post('/', User.RedirectLogin);
+
+module.exports = router;

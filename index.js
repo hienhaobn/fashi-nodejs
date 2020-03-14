@@ -6,6 +6,8 @@ const ProductMenRouter = require('./server/routers/product-men-router');
 const ProductWomenRouter = require('./server/routers/product-women-router');
 const ProductKidRouter = require('./server/routers/product-kid-router');
 const UserRouter = require('./server/routers/user.router');
+const LoginRouter = require('./server/routers/customer/login.router');
+const RegisterRouter = require('./server/routers/customer/register.router');
 
 // var ProductKidController = require("./server/controllers/productKid.controller");
 app.set("view engine", "ejs");
@@ -61,12 +63,12 @@ app.get("/blog-details", (req, res) => {
 app.get("/checkout", (req, res) => {
     res.render("pages/checkout");
 });
-app.get("/login", (req, res) => {
-    res.render("pages/login");
-});
-app.get("/register", (req, res) => {
-    res.render("pages/register");
-});
+// app.get("/login", (req, res) => {
+//     res.render("pages/login");
+// });
+app.use('/login', LoginRouter);
+app.use('/register', RegisterRouter);
+
 app.get("/shopping-cart", (req, res) => {
     res.render("pages/shopping-cart");
 });

@@ -3,6 +3,7 @@ const User = new mongoose.Schema({
     "username": String,
     "password": String,
     "role": Number,
+    "avatar": String,
     "created_at": {
         "type" : Date,
         "default": Date.now()
