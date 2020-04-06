@@ -53,7 +53,7 @@ hr{ border-top-color:#dadada;}
 	z-index: -9;
 }
 #header h1 {
-	background: url("../img/logo.png") no-repeat scroll 0 0 transparent;
+	background: url("../img/logo6.png") no-repeat scroll 0 0 transparent;
 	height: 31px;
 	left: 20px;
 	line-height: 600px;
@@ -449,17 +449,14 @@ hr{ border-top-color:#dadada;}
 	margin-bottom: 3px;
 	margin-top: 6px;
 }
-.stat-boxes .peity_bar_good, .stat-boxes .peity_line_good, {
- color: #459D1C;
-}
+
 .stat-boxes .peity_bar_neutral, .stat-boxes .peity_line_neutral {
 	color: #757575;
 }
 .stat-boxes .peity_bar_bad, .stat-boxes .peity_line_bad {
 	color: #BA1E20;
 }
-.stats-plain {
-}
+
 
 .site-stats {
 	margin: 0;

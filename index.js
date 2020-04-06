@@ -2,13 +2,13 @@ var express = require("express");
 var app = express();
 const bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-const ProductMenRouter = require('./server/routers/product-men-router');
-const ProductWomenRouter = require('./server/routers/product-women-router');
-const ProductKidRouter = require('./server/routers/product-kid-router');
 const UserRouter = require('./server/routers/user.router');
 const LoginRouter = require('./server/routers/customer/login.router');
 const RegisterRouter = require('./server/routers/customer/register.router');
-
+const BlogAdmin = require('./server/routers/blog.router');
+const StatisticAdmin = require('./server/routers/statistic.router');
+const OrderAdmin = require('./server/routers/order.router');
+const ProductAmin = require('./server/routers/product.router');
 // var ProductKidController = require("./server/controllers/productKid.controller");
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -63,9 +63,7 @@ app.get("/blog-details", (req, res) => {
 app.get("/checkout", (req, res) => {
     res.render("pages/checkout");
 });
-// app.get("/login", (req, res) => {
-//     res.render("pages/login");
-// });
+
 app.use('/login', LoginRouter);
 app.use('/register', RegisterRouter);
 
@@ -80,8 +78,8 @@ app.get("/admin", (req, res) => {
   res.render("pages/admin/home-admin");
 });
 
-app.use('/admin/page/shop-men', ProductMenRouter);
-app.use('/admin/page/shop-women', ProductWomenRouter);
-app.use('/admin/page/shop-kid', ProductKidRouter);
-app.use('/admin/page/admin-user', UserRouter);
-
+app.use('/admin/page', UserRouter);
+app.use('/admin/page', BlogAdmin);
+app.use('/admin/page', StatisticAdmin);
+app.use('/admin/page', OrderAdmin);
+app.use('/admin/page', ProductAmin);

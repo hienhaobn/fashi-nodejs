@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Fashi Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Fashi Admin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/admin/page/detail-user"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+          <li class="divider"></li>
+          <li><a href="/login"><i class="icon-key"></i> Đăng xuất</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" placeholder="Tìm kiếm..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Trang chủ admin</a>
+    <ul>
+      <li><a href="/admin/page/admin-user/"><i class="icon icon-user"></i> <span>Quản lý tài khoản</span></a> </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-book"></i> <span>Quản lý blog</span></a>
+        <ul>
+          <li><a href="/admin/page/list-blog/">Danh sách blog</a></li>
+          <li><a href="/admin/page/category-blog/">Danh sách thể loại</a></li>
+        </ul>
+      </li>
+      <li class="submenu active"> <a href="#"><i class="icon icon-truck"></i> <span>Quản lý hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-product/"> Danh sách hàng</a></li>
+          <li><a href="/admin/page/list-brand/">Danh sách nhà cung cấp</a></li>
+          <li><a href="/admin/page/list-category-product/">Danh sách thể loại</a></li>
+        </ul>
+      </a>
+      <li class="submenu"> <a href="#"><i class="icon icon-list-alt"></i> <span>Quản lý đơn hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-order/"> Danh sách đơn hàng</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-trophy"></i> <span>Thống kê</span></a>
+        <ul>
+          <li><a href="/admin/page/statistic-product/"> Thống kê hàng</a></li>
+          <li><a href="/admin/page/statistic-order/"> Thống kê đơn hàng</a></li>
+          <li><a href="/admin/page/revenue-statistics-product/"> Thống kê doanh thu</a></li>
+          <li><a href="/admin/page/statistic-account/"> Thống kê tài khoản</a></li>
+        </ul>
+      </li>
+     
+    </ul>
+  </div>
+
+  <div id="content">
+
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Trang
+                chủ</a></div>
+    </div>
+    <h3>Quản lý hàng</h3>
+    <button href="#popup-create-product" data-toggle="modal" style="float: right;" class="btn btn-success btnCreateProduct">Thêm</button>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title m-b-0">Danh sách hàng</h5>
+        </div>
+        <table class="table" id="data-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Mã sản phẩm</th>
+                    <th scope="col">Tên sản phẩm</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Thể loại</th>
+                    <th scope="col">Nhà cung cấp</th>
+                    <th scope="col">Giá bán</th>
+                    <th scope="col">Giảm giá</th>
+                    <th scope="col">Trạng thái giảm giá</th>
+                    <th scope="col">Sô lượng</th>
+                    <th scope="col">Trạng thái hàng</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+              <% data.pros.forEach( (pro, index) =>{ %>
+                <tr class="<%- pro._id %> ">
+                  <th scope="row"><%- index+1 %> </th>
+                  <td style="text-align: center;"><%- pro.code %> </td>
+                  <td style="text-align: center; width: 300px;"><%- pro.title %> </td>
+                  <td style="text-align: center; width: 150px; height: 150px;"><img src="http://localhost:3001/upload/help/product/<%- pro.image_product %>" alt="anh"></td>
+                  <% if(pro._category_product !== undefined || pro._category_product !== null) { %>
+                    <td style="text-align: center;"><%- (pro._category_product.name) %> </td>
+                <% } else { %>
+                  <td style="text-align: center;"></td>
+                <% } %> 
+
+                  <% if(pro._brand !== undefined || pro._brand !== null) { %>
+                      <td style="text-align: center;"><%- (pro._brand.name) %> </td>
+                  <% } else { %>
+                    <td style="text-align: center;"></td>
+                  <% } %> 
+                 
+                  <td style="text-align: center;"><%- pro.price %> </td>
+                  <% if(pro.old_price !=='' || pro.old_price !== null){ %>
+                    <td style="text-align: center;"><%- pro.old_price %> </td>
+                  <%}%>
+                  <% if(pro.old_price > 0){ %>
+                    <td style="text-align: center;"><i class="badge badge-success">Giảm giá</i></td>
+                  <%} else { %>
+                    <td style="text-align: center;"><i class="badge badge-pill badge-secondary">Không giảm giá</i></td>
+                  <%}%>
+                  
+                  <td style="text-align: center;"><%- pro.quantity %> </td>
+                  <% if(pro.quantity > 0){ %>
+                    <td style="text-align: center;"><i class="badge badge-success">Còn hàng</i></td>
+                  <%} else { %>
+                    <td style="text-align: center;"><i class="badge badge-pill badge-danger">Hết hàng</i></td>
+                  <%} %> 
+                  
+                  <td style="text-align: center;">
+                    <button href="#popup-edit-product" data-toggle="modal" data-id="<%- pro._id %>" class="btn btn-info btnEditProduct">Sửa</button>
+                    <button href="#popup-delete-product" data-toggle="modal" data-id="<%- pro._id %>" class="btn btn-danger btnDeleteProduct">Xóa</button>
+                  </td>
+              </tr>
+              <%} ) %> 
+               
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 &copy; Fashi Admin. </div>
+</div>
+
+<div id="popup-create-product" class="modal hide">
+  <form action="http://localhost:3001/admin/page/add-product" method="POST" enctype="multipart/form-data">
+ <div class="modal-header">
+   <button data-dismiss="modal" class="close" type="button">×</button>
+   <h3>Thêm thông sản phẩm</h3>
+ </div>
+ <div class="modal-body">
+  <label for="code"><strong>Mã sản phẩm</strong></label> 
+  <input type="text" name="code" id="code" placeholder="Nhập mã sản phẩm"><br/>
+  <label for="title"><strong>Tên sản phẩm</strong></label> 
+  <input type="text" name="txtName" id="name" placeholder="Nhập tên sản phẩm"><br/>
+  <label for="image"><strong>Ảnh</strong></label>
+  <input type="file" name="file" id="file"><br/>
+  <label for="category"><strong>Thể loại</strong></label>
+  <select name="category" id="category">
+    <% data.cates.forEach((cate) => { %>
+      <option value="<%-cate._id%>"><%- cate.name %> </option>
+    <% });%> 
+  </select>
+  <label for="brand"><strong>Nhà cung cấp</strong></label>
+  <select name="brand" id="brand">
+    <% data.brands.forEach((brand) => { %>
+      <option value="<%-brand._id%>"><%- brand.name %> </option>
+    <% });%> 
+  </select>
+  <label for="price"><strong>Giá bán</strong></label> 
+  <input type="text" name="txtPrice" id="price" placeholder="Nhập giá bán"><br/>
+  <label for="discount"><strong>Giá giảm</strong></label> 
+  <input type="text" name="txtDiscount" id="discount" placeholder="Nhập giá giảm"><br/>
+  <label for="discount"><strong>Số lượng</strong></label> 
+  <input type="text" name="txtQuantity" id="quantity" placeholder="Nhập số lượng"><br/>
+ </div>
+ <div class="modal-footer"> 
+  <button class="btn btn-primary" type="submit">Lưu</button>
+   <button data-dismiss="modal" class="btn" type="submit">Hủy</button> </div>
+</form>
+</div>
+
+
+<script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+<script src="js/excanvas.min.js"></script> 
+<script src="jquery-3.4.1.min.js"></script>
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.validate.js"></script> 
+<script src="js/jquery.wizard.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/matrix.popover.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="event-product.js"></script>
+</body>
+</html>

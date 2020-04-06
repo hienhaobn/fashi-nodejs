@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Fashi Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Fashi Admin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/admin/page/detail-user"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+          <li class="divider"></li>
+          <li><a href="/login"><i class="icon-key"></i> Đăng xuất</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" placeholder="Tìm kiếm..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Trang chủ admin</a>
+    <ul>
+      <li class="active"><a href="/admin/page/admin-user/"><i class="icon icon-user"></i> <span>Quản lý tài khoản</span></a> </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-book"></i> <span>Quản lý blog</span></a>
+        <ul>
+          <li><a href="/admin/page/list-blog">Danh sách blog</a></li>
+          <li><a href="/admin/page/category-blog">Danh sách thể loại</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-truck"></i> <span>Quản lý hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-product"> Danh sách hàng</a></li>
+          <li><a href="/admin/page/list-brand">Danh sách nhà cung cấp</a></li>
+          <li><a href="/admin/page/list-category-product">Danh sách thể loại</a></li>
+        </ul>
+      </a>
+      <li class="submenu"> <a href="#"><i class="icon icon-list-alt"></i> <span>Quản lý đơn hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-order"> Danh sách đơn hàng</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-trophy"></i> <span>Thống kê</span></a>
+        <ul>
+          <li><a href="/admin/page/statistic-product"> Thống kê hàng</a></li>
+          <li><a href="/admin/page/statistic-order"> Thống kê đơn hàng</a></li>
+          <li><a href="/admin/page/revenue-statistics-product"> Thống kê doanh thu</a></li>
+          <li><a href="/admin/page/statistic-account"> Thống kê tài khoản</a></li>
+        </ul>
+      </li>
+     
+    </ul>
+</div>
+
+<div id="content">
+
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Trang
+                chủ</a></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"> <i class="icon-briefcase"></i> </span>
+              <h5>Thông tin cá nhân</h5>
+            </div>
+            <div class="widget-content">
+              <div class="row-fluid">
+                <!-- <div class="span4" style="width: 150px; height: 150px;">
+                  <img src="http://localhost:3001/img/insta-1.jpg" />
+                </div> -->
+                <li class="span2" style="width: 150px;"> 
+                  <a> <img src="http://localhost:3001/img/insta-1.jpg" alt="anh"/><hr> </a> 
+                  <div class="actions"> <button type="submit" class="btn btn-info"><i class="icon-pencil"></i> Sửa</button> <button class="lightbox_trigger btn btn-warning" href="http://localhost:3001/img/insta-1.jpg"><i class="icon-search"></i> Xem</button> </div>
+                </li>
+                <div class="span8">
+                  <table class="table table-bordered table-invoice">
+                    <tbody>
+                      <tr>
+                        <td class="width30">Họ và tên: </td>
+                        <td class="width70"><strong>Trần Trần</strong></td>
+                      </tr>
+                      <tr>
+                        <td>Ngày sinh: </td>
+                        <td><strong>23/12/1998</strong></td>
+                      </tr>
+                      <tr>
+                        <td>Email: </td>
+                        <td><strong>abcdef@gmail.com</strong></td>
+                      </tr>
+                    <tr><td class="width30">Địa chỉ:</td>
+                      <td class="width70"><strong>Hà Nội</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Chức vụ: </td>
+                      <td><strong>Admin</strong></td>
+                    </tr>
+                      </tbody>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 &copy; Fashi Admin. </div>
+</div>
+
+
+<script src="js/excanvas.min.js"></script> 
+<script src="js/jquery.min.js"></script> 
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flot.min.js"></script> 
+<script src="js/jquery.flot.resize.min.js"></script> 
+<script src="js/jquery.peity.min.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script src="js/matrix.dashboard.js"></script> 
+<script src="js/matrix.chat.js"></script> 
+<script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.form_validation.js"></script> 
+<script src="js/jquery.wizard.js"></script> 
+<script src="js/jquery.uniform.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/matrix.popover.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="js/matrix.tables.js"></script> 
+</body>
+</html>

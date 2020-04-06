@@ -1,132 +1,212 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<%- include("../../../views/blocks/admin/head-admin") %>
-
+<head>
+<title>Fashi Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
 <body>
 
-    <!--Header-part-->
-    <div id="header">
-        <h1><a href="dashboard.html">Fashi Admin</a></h1>
-    </div>
-    <!--close-Header-part-->
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Fashi Admin</a></h1>
+</div>
+<!--close-Header-part--> 
 
-    <%- include("../../../views/blocks/admin/nav-header-top-admin") %>
-    <!--top-Header-menu-->
 
-    <!--close-top-Header-menu-->
-    <!--start-top-serch-->
-    <%- include("../../../views/blocks/admin/search-admin") %>
-    <!--close-top-serch-->
-    <!--sidebar-menu-->
-    <%- include("../../../views/blocks/admin/sidebar-menu-admin") %>
-    <!--sidebar-menu-->
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="/admin/page/detail-user"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+          <li class="divider"></li>
+          <li><a href="/login"><i class="icon-key"></i> Đăng xuất</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" placeholder="Tìm kiếm..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Trang chủ admin</a>
+    <ul>
+      <li class="active"><a href="/admin/page/admin-user/"><i class="icon icon-user"></i> <span>Quản lý tài khoản</span></a> </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-book"></i> <span>Quản lý blog</span></a>
+        <ul>
+          <li><a href="/admin/page/list-blog">Danh sách blog</a></li>
+          <li><a href="/admin/page/category-blog">Danh sách thể loại</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-truck"></i> <span>Quản lý hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-product"> Danh sách hàng</a></li>
+          <li><a href="/admin/page/list-brand">Danh sách nhà cung cấp</a></li>
+          <li><a href="/admin/page/list-category-product">Danh sách thể loại</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-list-alt"></i> <span>Quản lý đơn hàng</span></a>
+        <ul>
+          <li><a href="/admin/page/list-order"> Danh sách đơn hàng</a></li>
+        </ul>
+      </li>
+      <li class="submenu"> <a href="#"><i class="icon icon-trophy"></i> <span>Thống kê</span></a>
+        <ul>
+          <li><a href="/admin/page/statistic-product"> Thống kê hàng</a></li>
+          <li><a href="/admin/page/statistic-order"> Thống kê đơn hàng</a></li>
+          <li><a href="/admin/page/revenue-statistics-product"> Thống kê doanh thu</a></li>
+          <li><a href="/admin/page/statistic-account"> Thống kê tài khoản</a></li>
+        </ul>
+      </li>
+     
+    </ul>
+  </div>
 
-    <!--main-container-part-->
-    <div id="content">
-        <!--breadcrumbs-->
-        <div id="content-header">
-            <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                    Home</a>
-            </div>
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+                Trang chủ</a>
         </div>
-        <!--End-breadcrumbs-->
+    </div>
+    <!--End-breadcrumbs-->
 
-        <!--Action boxes-->
-        <div class="widget-box">
-            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-                <h5>Quản lý cửa hàng nữ</h5>
-                <div>
+    <!--Action boxes-->
+    <div class="widget-box">
+        <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>Quản lý tài khoản</h5>
+            <div>
 
 
-                    <div style="float: right;">
-                        <button type="button" id="btnAddAccount" class="btn btn-success" data-toggle="modal"
-                            data-target="#addAccount">
-                            Thêm
-                        </button>
-                    </div>
-                    <!-- Modal -->
-                    <form action="http://localhost:3001/admin/page/admin-user/create-user" method="POST"
-                        id="modal-create">
-                        <div class="modal fade" id="addAccount" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Thêm sản phẩm</h5>
+                <div style="float: right;">
+                    <button type="button" id="btnAddAccount" class="btn btn-success" data-toggle="modal"
+                        data-target="#addAccount">
+                        Thêm
+                    </button>
+                </div>
+                <!-- Modal -->
+                <form action="http://localhost:3001/admin/page/admin-user/create-user" method="POST"
+                    id="modal-create">
+                    <div class="modal fade" id="addAccount" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Thêm tài khoản</h5>
 
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-
-                                        <input type="text" name="txtName" id="name" placeholder="Nhập tên tài khoản" />
-                                        <input type="text" name="txtPassword" id="password"
-                                            placeholder="Nhập mật khẩu" />
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Đóng</button>
-                                        <button id="btnSave" type="submit"
-                                            class="btn btn-primary">Lưu</button>
-                                    </div>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <label><strong>Tên tài khoản</strong></label>
+                                    <input type="text" name="txtName" id="name" placeholder="Nhập tên tài khoản" />
+                                    <label><strong>Mật khẩu</strong></label>
+                                    <input type="text" name="txtPassword" id="password"
+                                        placeholder="Nhập mật khẩu" />
+                                        <label><strong>Họ và tên</strong></label>
+                                    <input type="text" name="txtFullname" id="fullname"
+                                        placeholder="Nhập họ và tên" />
+                                        <label><strong>Ảnh đại diện</strong></label>
+                                        <input type="file" name="file" id="file">
+                                        <label><strong>Email</strong></label>
+                                    <input type="text" name="txtEmail" id="email"
+                                        placeholder="Nhập email" />
+                                        <label><strong>Số điện thoại</strong></label>
+                                    <input type="text" name="txtPhone" id="phone"
+                                        placeholder="Nhập số điện thoại" />
+                                        <label><strong>Địa chỉ</strong></label>
+                                    <input type="text" name="txtAddress" id="address"
+                                        placeholder="Nhập địa chỉ" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Đóng</button>
+                                    <button id="btnSave" type="submit" class="btn btn-primary">Lưu</button>
                                 </div>
                             </div>
                         </div>
-                         </form>
-                </div>
-            </div>
-           
-            <div class="widget-content nopadding">
-                <table class="table table-bordered data-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 100px; text-align: center;">STT</th>
-                            <th >Tên tài khoản</th>
-                            <th>Mật khẩu</th>
-                            <th>Vai trò</th>
-                            <th style="width: 150px;"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="data-table">
-                      <% users.forEach( (user, index) => { %>
-                        <tr class="gradeX">
-                        <td style="text-align: center;"><%- index+1 %> </td>
-                        <td style="text-align: center;"><%- user.username %> </td>
-                        <td style="text-align: center;"><%- user.password %> </td>
-                        <% if(user.role === 0) { %>
-                            <td style="text-align: center;">Super admin</td>
-                        <%} else if (user.role === 1) { %>
-                            <td style="text-align: center;">Admin</td>
-                       <% } else{ %>
-                        <td style="text-align: center;">Khách hàng</td>
-                       <% } %>
-                        
-                        <td style="text-align: center;">
-                            <% if(user.role === 0) { %>
-                                 <button class="btn btn-info btnEditAccount" data-toggle="modal" data-id="<%- user._id %>"
-                                data-target="#editAccount"> <i class="icon-edit">&nbsp; </i>Sửa</<i>&nbsp; </button>
-                           <% } else { %>
-                                <button class="btn btn-info btnEditAccount" data-toggle="modal" data-id="<%- user._id %>"
-                                data-target="#editAccount"> <i class="icon-edit">&nbsp; </i>Sửa</<i>&nbsp; </button>
-                                <button class="btn btn-danger btnDeleteAccount" data-toggle="modal" data-id="<%- user._id %>"
-                                data-target="#deleteAccount">Xóa</button>
-                            <%}%> 
-                          
-                        </td>
-                      </tr>
-                     <% }) %> 
-
-
-                    </tbody>
-                </table>
+                    </div>
+                </form>
             </div>
         </div>
+
+        <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20px; text-align: center;">STT</th>
+                        <th>Tên tài khoản</th>
+                        <th>Mật khẩu</th>
+                        <th>Họ và tên</th>
+                        <th>Ảnh đại diện</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Vai trò</th>
+                        <th style="width: 150px;"></th>
+                    </tr>
+                </thead>
+                <tbody id="data-table">
+                    <% users.forEach( (user, index) => { %>
+                    <tr class="gradeX">
+                        <td style="text-align: center;"><%- index+1 %> </td>
+                        <td style="text-align: center;"><%- user.username %> </td>
+                        <td style="text-align: center;"><%- user.password %></td>
+                        <td style="text-align: center;"><%- user.name %> Nguyễn Văn A</td>
+                        <td style="text-align: center;"><%- user.image_avatar %> <img src="http://localhost:3001/img/product-single/avatar-1.png"/> </td>
+                        <td style="text-align: center;"><%- user.email %> abcdef@gmail.com </td>
+                        <td style="text-align: center;"><%- user.phone %> 0987631253</td>
+                        <td style="text-align: center;"><%- user.address %>Cầu Giấy - Hà Nội </td>
+                        <% if(user.role === 0) { %>
+                        <td style="text-align: center;">Super admin</td>
+                        <%} else if (user.role === 1) { %>
+                        <td style="text-align: center;">Admin</td>
+                        <% } else{ %>
+                        <td style="text-align: center;">Khách hàng</td>
+                        <% } %>
+                      
+                        <td style="text-align: center;">
+                            <% if(user.role === 0) { %>
+                            <button class="btn btn-info btnEditAccount" data-toggle="modal"
+                                data-id="<%- user._id %>" data-target="#editAccount"> <i class="icon-edit">&nbsp;
+                                </i>Sửa</<i>&nbsp; </button>
+                            <% } else { %>
+                            <button class="btn btn-info btnEditAccount" data-toggle="modal"
+                                data-id="<%- user._id %>" data-target="#editAccount"> <i class="icon-edit">&nbsp;
+                                </i>Sửa</<i>&nbsp; </button>
+                            <button class="btn btn-danger btnDeleteAccount" data-toggle="modal"
+                                data-id="<%- user._id %>" data-target="#deleteAccount">Xóa</button>
+                            <%}%> 
+                      
+                    </td>
+                  </tr>
+                 <% }) %>
+
+
+                </tbody>
+            </table>
+        </div>
+        
     </div>
-    <form action="" method="POST"
-    id="modal-delete">
-    <div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true" id="modal-delete">
+</div>
+<form action="" method="POST" id="modal-delete">
+    <div class="modal fade" id="deleteAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true" id="modal-delete">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -141,45 +221,64 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                    <button type="submit" class="btn btn-primary btnConfirmDelete" >Đồng ý</button>
+                    <button type="submit" class="btn btn-primary btnConfirmDelete">Đồng ý</button>
                 </div>
             </div>
         </div>
     </div>
-    </form>
-    <!-- modal edit -->
-    <form action="" method="POST" id="modal-edit">
-                        <div class="modal fade" id="editAccount" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLongTitle">Sửa sản phẩm</h5>
+</form>
+<!-- modal edit -->
+<form action="" method="POST" id="modal-edit">
+    <div class="modal fade" id="editAccount" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sửa sản phẩm</h5>
 
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body" style="text-align: center;">
-                                        <label><b>Tên tài khoản</b>  </label>
-                                        <input type="text" name="Name" id="edit-name" placeholder="Nhập tên tài khoản" /> <br/>
-                                            <label><b>Mật khẩu mới</b></label>
-                                            <input type="password" name="newPassword" id="newPassword" placeholder="Nhập mật khẩu mới" /><br/>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Đóng</button>
-                                        <button id="btnSaveEdit" type="submit"
-                                            class="btn btn-primary">Lưu</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <label><strong>Tên tài khoản</strong></label>
+                    <input type="text" name="name" id="edit-name" placeholder="Nhập tên tài khoản" />
+                    <label><strong>Mật khẩu</strong></label>
+                    <input type="text" name="password" id="edit-password"
+                        placeholder="Nhập mật khẩu" />
+                        <label><strong>Họ và tên</strong></label>
+                    <input type="text" name="fullname" id="eidt-fullname"
+                        placeholder="Nhập họ và tên" />
+                        <label><strong>Ảnh đại diện</strong></label>
+                        <input type="file" name="file" id="file">
+                        <label><strong>Email</strong></label>
+                    <input type="text" name="email" id="edit-email"
+                        placeholder="Nhập email" />
+                        <label><strong>Số điện thoại</strong></label>
+                    <input type="text" name="phone" id="edit-phone"
+                        placeholder="Nhập số điện thoại" />
+                        <label><strong>Địa chỉ</strong></label>
+                    <input type="text" name="address" id="edit-address"
+                        placeholder="Nhập địa chỉ" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                    <button id="btnSaveEdit" type="submit" class="btn btn-primary">Lưu</button>
                 </div>
             </div>
-            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+</form>
 
-    <%- include("../../../views/blocks/admin/script-admin") %>
+
+
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 &copy; Fashi Admin. </div>
+</div>
+
+
+<%- include("../../../views/blocks/admin/script-admin") %>
 </body>
-
 </html>

@@ -1,158 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include("../../../views/blocks/admin/head-admin") %>
-
+<head>
+<title>Fashi Admin</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+</head>
 <body>
 
-  <!--Header-part-->
-  <div id="header">
-    <h1><a href="dashboard.html">Fashi Admin</a></h1>
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Fashi Admin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="#"><i class="icon-user"></i> Thông tin cá nhân</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="icon-check"></i> Nhiệm vụ</a></li>
+        <li class="divider"></li>
+        <li><a href="login.html"><i class="icon-key"></i> Đăng xuất</a></li>
+      </ul>
+    </li>
+   
+    <li class=""><a title="" href="#"><i class="icon icon-cog"></i> <span class="text">Cài đặt</span></a></li>
+    <li class=""><a title="" href="login.html"><i class="icon icon-share-alt"></i> <span class="text">Đăng xuất</span></a></li>
+  </ul>
+</div>
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<div id="search">
+  <input type="text" placeholder="Tìm kiếm..."/>
+  <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
+</div>
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Trang chủ admin</a>
+  <ul>
+    <li><a href="/admin/page/admin-user/"><i class="icon icon-user"></i> <span>Quản lý tài khoản</span></a> </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-book"></i> <span>Quản lý blog</span></a>
+      <ul>
+        <li><a href="/admin/page/list-blog">Danh sách blog</a></li>
+        <li><a href="/admin/page/category-blog">Danh sách thể loại</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-truck"></i> <span>Quản lý hàng</span></a>
+      <ul>
+        <li><a href="/admin/page/list-product"> Danh sách hàng</a></li>
+        <li><a href="/admin/page/list-brand">Danh sách nhà cung cấp</a></li>
+        <li><a href="/admin/page/list-category-product">Danh sách thể loại</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-list-alt"></i> <span>Quản lý đơn hàng</span></a>
+      <ul>
+        <li><a href="/admin/page/list-order"> Danh sách đơn hàng</a></li>
+      </ul>
+    </li>
+    <li class="submenu"> <a href="#"><i class="icon icon-trophy"></i> <span>Thống kê</span></a>
+      <ul>
+        <li><a href="/admin/page/statistic-product"> Thống kê hàng</a></li>
+        <li><a href="/admin/page/statistic-order"> Thống kê đơn hàng</a></li>
+        <li><a href="/admin/page/revenue-statistics-product"> Thống kê doanh thu</a></li>
+        <li><a href="/admin/page/statistic-account"> Thống kê tài khoản</a></li>
+      </ul>
+    </li>
+   
+  </ul>
+</div>
+
+<div id="content">
+
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Trang chủ</a></div>
   </div>
-  <!--close-Header-part-->
-
-  <%- include("../../../views/blocks/admin/nav-header-top-admin") %>
-  <!--top-Header-menu-->
-
-  <!--close-top-Header-menu-->
-  <!--start-top-serch-->
-  <%- include("../../../views/blocks/admin/search-admin") %>
-  <!--close-top-serch-->
-  <!--sidebar-menu-->
-  <%- include("../../../views/blocks/admin/sidebar-menu-admin") %>
-  <!--sidebar-menu-->
-
-  <!--main-container-part-->
-  <div id="content">
-    <!--breadcrumbs-->
-    <div id="content-header">
-      <div id="breadcrumb"> <a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-      </div>
-    </div>
-    <!--End-breadcrumbs-->
-
-    <!--Action boxes-->
-    <div class="widget-box">
-      <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-        <h5>Product Kid</h5>
-        <div>
-          <!-- <button id="addProductKid" class="btn btn-danger"  data-toggle="modal" data-target="#addProductKid" style="float: right; height: 37px;"><i class="icon-plus"></i></<i></button> -->
-          <!-- Button trigger modal -->
-          <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductKid">
-        Add
-      </button> -->
-          <div style="float: right;">
-            <button type="button" id="btnAddShop" class="btn btn-primary" data-toggle="modal"
-              data-target="#addProductKid">
-              Add
-            </button>
-          </div>
-          <!-- Modal -->
-          <form action="http://localhost:3001/admin/page/admin-shop-kid" method="POST" enctype="multipart/form-data">
-            <div class="modal fade" id="addProductKid" tabindex="-1" role="dialog"
-              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Add Product</h5>
-
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-
-                    <input type="text" name="txtName" id="name" placeholder="Please enter name" />
-                    <input type="text" name="txtCategory" id="category" placeholder="Please enter category" />
-                    <input type="file" name="fileImage" id="image" />
-                    <input type="text" name="txtMaker" id="maker" placeholder="Please enter Brand" />
-                    <input type="text" name="txtPrice" id="price" placeholder="Please enter price" />
-                    <input type="text" name="txtDiscount" id="discout" placeholder="Please enter discount" />
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="btnSaveProduct" type="submit" class="btn btn-primary">Save</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-      </form>
-      <div class="widget-content nopadding">
-        <table class="table table-bordered data-table">
-          <thead>
-            <tr>
-              <th style="width: 10px;">STT</th>
-              <th style="width: 200px;">Name</th>
-              <th style="width: 150px;">Image</th>
-              <th>Category</th>
-              <th>Brand</th>
-              <th>Price</th>
-              <th>Discount</th>
-              <th style="width: 150px;"></th>
-            </tr>
-          </thead>
-          <tbody>
-           
-            <tr class="gradeX">
-          <td>1</td>
-          <td>Internet
-            Explorer 4.0</td>
-          <td>Win 95+</td>
-          <td class="center">4</td>
-          <td>Cavin</td>
-          <td>123$
-          </td>
-          <td>120$</td>
-          <td>
-            <button class="btn btn-info"> <i class="icon-edit">&nbsp; </i>Edit</<i>&nbsp; </button>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <h1>Chào mừng bạn đã đến với trang quản lý Website Fashi</h1>
+ 
+</div>
 
 
-    <!--end-main-container-part-->
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 &copy; Fashi Admin. </div>
+</div>
 
-    <!--Footer-part-->
 
-    <%- include("../../../views/blocks/admin/footer-admin") %>
-
-    <!--end-Footer-part-->
-
-    <%- include("../../../views/blocks/admin/script-admin") %> pt>
-    <script src="js/matrix.tables.js"></script>
-
-    <script type="text/javascript">
-      // This function is called from the pop-up menus to transfer to
-      // a different page. Ignore if the value returned is a null string:
-      function goPage(newURL) {
-
-        // if url is empty, skip the menu dividers and reset the menu selection to default
-        if (newURL != "") {
-
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-") {
-            resetMenu();
-          }
-          // else, send page to designated URL            
-          else {
-            document.location.href = newURL;
-          }
-        }
-      }
-
-      // resets the menu selection upon entry to this page:
-      function resetMenu() {
-        document.gomenu.selector.selectedIndex = 2;
-      }
-    </script>
-
+<script src="js/excanvas.min.js"></script> 
+<script src="js/jquery.min.js"></script> 
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flot.min.js"></script> 
+<script src="js/jquery.flot.resize.min.js"></script> 
+<script src="js/jquery.peity.min.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script src="js/matrix.dashboard.js"></script> 
+<script src="js/matrix.chat.js"></script> 
+<script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.form_validation.js"></script> 
+<script src="js/jquery.wizard.js"></script> 
+<script src="js/jquery.uniform.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/matrix.popover.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="js/matrix.tables.js"></script> 
 </body>
-
 </html>
