@@ -52,10 +52,6 @@ module.exports.createAdminUser = (req, res) => {
     user.save(err => {
       if (err) {
         console.log("Create account fail!");
-        // res.json({
-        //     "message": "Fail",
-        //     "status": 404
-        // });
       } else {
         console.log("Create account successfull! ", user);
         res.redirect("http://localhost:3001/admin/page/admin-user");

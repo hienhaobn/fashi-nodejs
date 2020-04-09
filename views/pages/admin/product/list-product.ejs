@@ -125,8 +125,14 @@
                  
                   <td style="text-align: center;"><%- pro.price %> </td>
                   <% if(pro.old_price !=='' || pro.old_price !== null){ %>
-                    <td style="text-align: center;"><%- pro.old_price %> </td>
+                    <% if(pro.old_price === 0){ %>
+                      <td style="text-align: center;"></td>
+                    <%} else {%>
+                      <td style="text-align: center;"><%- pro.old_price %> </td>
+                    <%}%>
+                    
                   <%}%>
+                  
                   <% if(pro.old_price > 0){ %>
                     <td style="text-align: center;"><i class="badge badge-success">Giảm giá</i></td>
                   <%} else { %>
@@ -141,15 +147,34 @@
                   <%} %> 
                   
                   <td style="text-align: center;">
-                    <button href="#popup-edit-product" data-toggle="modal" data-id="<%- pro._id %>" class="btn btn-info btnEditProduct">Sửa</button>
+                    <button href="#popup-update-product" data-toggle="modal" data-id="<%- pro._id %>" class="btn btn-info btnEditProduct">Sửa</button>
                     <button href="#popup-delete-product" data-toggle="modal" data-id="<%- pro._id %>" class="btn btn-danger btnDeleteProduct">Xóa</button>
                   </td>
               </tr>
               <%} ) %> 
-               
-               
+              
+             
             </tbody>
         </table>
+       <% if(data.pros.length > 0){ %>
+        <div class="pagination" style="margin-left: 500px;">
+          <ul>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=1"> Trở về </a></li>
+            <li> <a href="http://localhost:3001/admin/page/list-product?page=1">1</a> </li>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=2">2</a></li>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=3">3</a></li>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=4">4</a></li>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=5">Tiếp</a></li>
+          </ul>
+        </div>
+       <%} else {%>
+        <div class="pagination">
+          <ul>
+            <li><a href="http://localhost:3001/admin/page/list-product?page=1"> Trở về </a></li>
+          </ul>
+        </div>
+       <%} %> 
+       
     </div>
 </div>
 
@@ -195,7 +220,43 @@
    <button data-dismiss="modal" class="btn" type="submit">Hủy</button> </div>
 </form>
 </div>
-
+<div id="popup-update-product" class="modal hide">
+  <form action="" method="POST" id="modal-update" enctype="multipart/form-data">
+ <div class="modal-header">
+   <button data-dismiss="modal" class="close" type="button">×</button>
+   <h3>Sửa thông sản phẩm</h3>
+ </div>
+ <div class="modal-body">
+  <label for="code"><strong>Mã sản phẩm</strong></label> 
+  <input type="text" name="editCode" id="editCode" placeholder="Nhập mã sản phẩm"><br/>
+  <label for="title"><strong>Tên sản phẩm</strong></label> 
+  <input type="text" name="txtEditName" id="editName" placeholder="Nhập tên sản phẩm"><br/>
+  <label for="image"><strong>Ảnh</strong></label>
+  <input type="file" name="fileUpdate" id="fileUpdate"><br/>
+  <label for="category"><strong>Thể loại</strong></label>
+  <select name="editCategory" id="editCategory">
+    <% data.cates.forEach((cate) => { %>
+      <option value="<%-cate._id%>"><%- cate.name %> </option>
+    <% });%> 
+  </select>
+  <label for="brand"><strong>Nhà cung cấp</strong></label>
+  <select name="editBrand" id="editBrand">
+    <% data.brands.forEach((brand) => { %>
+      <option value="<%-brand._id%>"><%- brand.name %> </option>
+    <% });%> 
+  </select>
+  <label for="price"><strong>Giá bán</strong></label> 
+  <input type="text" name="txtEditPrice" id="editPrice" placeholder="Nhập giá bán"><br/>
+  <label for="discount"><strong>Giá giảm</strong></label> 
+  <input type="text" name="txtEditDiscount" id="editDiscount" placeholder="Nhập giá giảm"><br/>
+  <label for="discount"><strong>Số lượng</strong></label> 
+  <input type="text" name="txtEditQuantity" id="editQuantity" placeholder="Nhập số lượng"><br/>
+ </div>
+ <div class="modal-footer"> 
+  <button class="btn btn-primary" type="submit">Lưu</button>
+   <button data-dismiss="modal" class="btn" type="submit">Hủy</button> </div>
+</form>
+</div>
 
 <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
 <script src="js/excanvas.min.js"></script> 

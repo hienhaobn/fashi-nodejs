@@ -9,6 +9,7 @@ const BlogAdmin = require('./server/routers/blog.router');
 const StatisticAdmin = require('./server/routers/statistic.router');
 const OrderAdmin = require('./server/routers/order.router');
 const ProductAmin = require('./server/routers/product.router');
+const ProductCustomer = require('./server/routers/customer/shop.router');
 // var ProductKidController = require("./server/controllers/productKid.controller");
 app.set("view engine", "ejs");
 app.set("views", "./views");
@@ -27,7 +28,7 @@ mongoose.set("useCreateIndex", true);
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useUnifiedTopology", true);
 mongoose.connect(
-  "mongodb+srv://admin:admin@cluster0-jfvq1.mongodb.net/Fashi?retryWrites=true&w=majority",
+  "mongodb://localhost:27017/fashi",
   { useNewUrlParser: true },
   err => {
     if (err) {
@@ -42,18 +43,7 @@ mongoose.connect(
 app.get("/", (req, res) => {
   res.render("Home");
 });
-app.get("/shop", (req, res) => {
-  res.render("pages/shop");
-});
-app.get("/shop-men", (req, res) => {
-  res.render("pages/shop-men");
-});
-app.get("/shop-women", (req, res) => {
-    res.render("pages/shop-women");
-  });
-app.get("/shop-kids", (req, res) => {
-    res.render("pages/shop-kids");
-});
+
 app.get("/blog", (req, res) => {
     res.render("pages/blog-customer");
 });
@@ -77,7 +67,7 @@ app.get("/product", (req, res) => {
 app.get("/admin", (req, res) => {
   res.render("pages/admin/home-admin");
 });
-
+app.use('/', ProductCustomer);
 app.use('/admin/page', UserRouter);
 app.use('/admin/page', BlogAdmin);
 app.use('/admin/page', StatisticAdmin);

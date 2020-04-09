@@ -29,7 +29,6 @@ var upload = multer({
       fileSize: 1024 * 1024 * 25
     },
     fileFilter: (req, file, cb) => {
-      console.log(file);
       if (
         file.mimetype == "image/bmp" ||
         file.mimetype == "image/png" ||
@@ -51,7 +50,7 @@ router.get('/list-category-product', ProductController.getListCategoryProduct);
 // trong truong hop loi get product can xem lai router get nay 
 router.get('/get-category/:id',ProductController.getCategory);
 router.post('/add-category', ProductController.addCategory);
-router.post('/delete-category/:id', ProductController.deleteCategory);
+router.post('/delete-category', ProductController.deleteCategory);
 router.post('/update-category/:id', ProductController.updateCategory);
 
 //brand
@@ -65,5 +64,5 @@ router.post('/update-brand/:id', ProductController.updateBrand);
 router.get('/get-product/:id', ProductController.getProduct);
 router.post('/add-product',upload.single('file'), ProductController.addProduct);
 router.post('/delete-product', ProductController.deleteProduct);
-router.post('/update-product/:id', ProductController.updateProduct);
+router.post('/update-product/:id',upload.single('fileUpdate'), ProductController.updateProduct);
 module.exports = router;

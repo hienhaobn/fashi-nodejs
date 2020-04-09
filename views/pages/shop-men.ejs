@@ -66,241 +66,55 @@
                     </div>
                     <div class="product-list">
                         <div class="row">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-1.jpg" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
+                            <% data.forEach( element => { %>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <img style="width: 150px; height: 290px;" src="upload/help/product/<%- element.image_product %> " alt="">
+                                            <div class="icon">
+                                                <i class="icon_heart_alt"></i>
+                                            </div>
+                                            <ul>
+                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a href="#">+ Xem ngay</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="/product">
-                                            <h5>Pure Paineapple</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            140.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-2.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="/product">
-                                            <h5>Guangzahou sweater</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            130.000 VNĐ
-                                            <span>350.000 VNĐ</span>
+                                        <div class="pi-text">
+                                            <div class="catagory-name"><%- element._brand.name %> </div>
+                                            <a href="/product">
+                                                <h5><%- element.title %> </h5>
+                                            </a>
+                                            <div class="product-price">
+                                                <%- element.price %> 
+                                                <span>350.000 VNĐ</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-3.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="/product">
-                                            <h5>Guangzahou sweater</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            340.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-4.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="/product">
-                                            <h5>Microfaiber Wool Scarf</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            640.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-5.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="/product">
-                                            <h5>Men's aPainted Hat</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            440.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-6.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="/product">
-                                            <h5>Converase Shoes</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            340.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-7.jpg" alt="">
-                                        <div class="sale pp-sale">Sale</div>
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Towel</div>
-                                        <a href="/product">
-                                            <h5>Pure Paineapple</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            640.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-8.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Coat</div>
-                                        <a href="/product">
-                                            <h5>2 Layear Windbreaker</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            440.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="img/products/product-9.jpg" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="#">+ Xem ngay</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Shoes</div>
-                                        <a href="/product">
-                                            <h5>Converase Shoes</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            340.000 VNĐ
-                                            <span>350.000 VNĐ</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%}) %> 
+
                         </div>
                     </div>
-                    <div class="loading-more">
-                        <i class="icon_loading"></i>
-                        <a href="#">
-                            Hiển thị thêm
-                        </a>
-                    </div>
+                    <% if(data.length > 0){%>
+                        <nav aria-label="Page navigation example" style="margin-left: 290px;">
+                            <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=1">Trở lại</a></li>
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=1">1</a></li>
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=2">2</a></li>
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=3">3</a></li>
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=4">Tiếp theo</a></li>
+                            </ul>
+                      </nav>
+                    <%} else { %>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="http://localhost:3001/shop-men?page=1">Trở lại</a></li>
+                            
+                            </ul>
+                      </nav>
+                   <% } %> 
+                    
                 </div>
             </div>
         </div>

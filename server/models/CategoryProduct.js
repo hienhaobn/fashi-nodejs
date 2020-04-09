@@ -7,6 +7,7 @@ const categoryProductSchema = new Schema( {
         "type": mongoose.Schema.Types.ObjectId,
         "ref": "Product"
     }],
+    "type_product": String,
     "status": Boolean,
     "created_at": {
         "type" : Date,

@@ -92,15 +92,17 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Tên thể loại</th>
+                    <th scope="col">Kiểu thể loại</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
               <% cates.forEach( (cate, index) => { %>
-              <tr>
+              <tr class="item-id-<%- cate._id %>" >
                 <th scope="row"><%- index+1 %> </th>
                 <td style="text-align: center; width: 700px;"><%- cate.name %> </td>
+                <td style="text-align: center; width: 300;"><%- cate.type_product %> </td>
                 <% if(cate.status == true) { %>
                 <td style="text-align: center;"><i class="badge badge-success">Hoạt động</i></td>
                 <% } else { %>
@@ -132,6 +134,8 @@
  <div class="modal-body">
      <label for="title"><strong>Tên thể loại</strong></label> 
      <input type="text" name="txtName" id="name" placeholder="Nhập tên thể loại"><br/>
+     <label for="title"><strong>Kiểu thể loại</strong></label> 
+     <input type="text" name="txtTypeProduct" id="typeProduct" placeholder="Nhập kiểu thể loại"><br/>
  </div>
  <div class="modal-footer"> 
   <button id="btnAddCategory" class="btn btn-primary" type="submit">Lưu</button>
@@ -147,7 +151,8 @@
   <div class="modal-body">
       <label for="title"><strong>Tên thể loại</strong></label> 
       <input type="text" name="nameCategory" id="nameCategory" placeholder="Nhập tiêu đề"><br/>
-     
+      <label for="title"><strong>Kiểu thể loại</strong></label> 
+     <input type="text" name="nameTypeProduct" id="nameTypeProduct" placeholder="Nhập kiểu thể loại"><br/>
       <label for="title"><strong>Trạng thái</strong></label>
       <select name="category" id="updateStatus">
           <option value="0">Hoạt động</option>
@@ -162,7 +167,7 @@
 </form>
 </div>
 
-<div id="popup-delete-category-product" class="modal hide">
+<!-- <div id="popup-delete-category-product" class="modal hide">
   <form action="" method="POST" id="modal-delete">
  <div class="modal-header">
    <button data-dismiss="modal" class="close" type="button">×</button>
@@ -175,8 +180,9 @@
       <button class="btn btn-primary" type="submit">Đồng ý</button>
       <button data-dismiss="modal" class="btn" type="button">Hủy</button> </div>
 </form>
-</div>
+</div> -->
 
+<script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
 <script src="js/excanvas.min.js"></script> 
 <script src="jquery-3.4.1.min.js"></script>
 <script src="js/jquery.ui.custom.js"></script> 

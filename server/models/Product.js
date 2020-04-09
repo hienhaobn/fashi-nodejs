@@ -11,14 +11,14 @@ const productSchema = new mongoose.Schema({
         "type": mongoose.Schema.Types.ObjectId,
         "ref": "BrandProduct"
     },
+    "_user": {
+        "type": mongoose.Schema.Types.ObjectId,
+        "ref": "User"
+    },
     "description": String,
-    "size": [String],
+    "size": String,
     "price": Number,
     "old_price": Number,
-    "active_sale": {
-        "type": Boolean,
-        "default": false
-    },
     "quantity": Number,
     "ordered": Number,
     "created_at": {

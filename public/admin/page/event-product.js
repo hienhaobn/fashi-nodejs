@@ -2,16 +2,7 @@ $(function() {
   //event category
   $("#data-table").on("click", ".btnDeleteCategoryProduct", function() {
     let id = $(this).data("id");
-    $.ajax({
-      url: "http://localhost:3001/admin/page/get-category/" + id,
-      method: "GET"
-    }).done(function(result) {
-      console.log(result);
-      $("#modal-delete").attr(
-        "action",
-        "http://localhost:3001/admin/page/delete-category/" + result.data[0]._id
-      );
-    });
+    if(id) deleteCategoryModal(id);
   });
   $("#data-table").on("click", ".btnEditCategoryProduct", function() {
     let id = $(this).data("id");
@@ -29,7 +20,54 @@ $(function() {
       );
     });
   });
+	function deleteCategoryModal(categoryId) {
+    var html =
+      '<div id="dynamicDeleteModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="confirm-modal" aria-hidden="true">';
+    html += '<div class="modal-dialog">';
+    html += '<div class="modal-content">';
+    html += '<div class="modal-body">';
+    html += "<label><strong>Thông báo</strong></label>";
+    html += "<p>Bạn có muốn xóa thể loại sản phẩm này?</p>";
+    html += "</div>";
+    html += '<div class="text-center" style="padding: 0 15px 15px;">';
+    html +=
+      '<button type="button" class="btn btn-green" data-dismiss="modal">Hủy</button>';
+    html +=
+      '<button type="button" class="btn btn-danger confirm-delete-category">Xóa</button>';
+    html += "</div>"; // content
+    html += "</div>"; // dialog
+    html += "</div>"; // modalWindow
+    $("body").append(html);
+    $("#dynamicDeleteModal").modal();
+    $("#dynamicDeleteModal").modal("show");
 
+    $(".confirm-delete-category").on("click", function() {
+			$("#dynamicDeleteModal").modal("hide");
+      const callback = function(res) {
+        if (res.code === 0) {
+          swal({icon: "success",title: "Thông báo",text: res.message});
+        }else {
+          swal({icon: "error",title: "Thông báo",text: res.message});
+        }
+      };
+      deleteCategory(categoryId, callback);
+      $("#data-table").find(".item-id-"+categoryId).remove();
+    });
+  }
+  function deleteCategory(categoryId, cb) {
+    $.ajax({
+      url: "http://localhost:3001/admin/page/delete-category/",
+      method: "POST",
+      data: { categoryId: categoryId },
+      dataType: "json",
+      error: function(err) {
+        $("#dynamicDeleteModal").modal("hide");
+        swal({icon: "error",title: "Thông báo",text: "Chưa kết nối server!"})
+      }
+    }).then(function(res) {
+			cb(res);
+		});
+	}
   // event brand
   $("#data-table").on("click", ".btnDeleteProductBrand", function() {
     let id = $(this).data("id");
@@ -106,7 +144,25 @@ $(function() {
     let id = $(this).data("id");
     if (id) deleteProductModal(id);
 	});
-	
+  
+  $("#data-table").on("click", ".btnEditProduct", function() {
+    let id = $(this).data("id");
+    $.ajax({
+      url: "http://localhost:3001/admin/page/get-product/" + id,
+      method: "GET"
+    }).done(function(result) {
+      console.log(result);
+      $("#editCode").val(result.data[0].code);
+      $("#editName").val(result.data[0].title);
+      $("#editPrice").val(result.data[0].price);
+      $("#editDiscount").val(result.data[0].old_price);
+      $("#editQuantity").val(result.data[0].quantity);
+      $("#modal-update").attr(
+        "action",
+        "http://localhost:3001/admin/page/update-product/" + result.data[0]._id
+      );
+    });
+	});
   function deleteProductModal(productId) {
     var html =
       '<div id="dynamicDeleteModal" class="modal fade" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="confirm-modal" aria-hidden="true">';
@@ -198,8 +254,8 @@ $(function() {
 		 html+=	'<button data-dismiss="modal" class="btn" type="submit">Hủy</button>' ;
 		 html+='</div>';
 		 html+='</div>';
-	}
-	function addProduct(){
-
-	}
+  }
+  
+ 
+  
 });
